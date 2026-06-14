@@ -10,8 +10,8 @@ body {
 
 body.login-page {
     margin: 0;
-    background: #eef3f8;
-    color: #172033;
+    background: #eef2f6;
+    color: #101828;
     font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
 }
 
@@ -24,148 +24,160 @@ body.login-page .container.content {
 
 body.login-page .container-centering {
     display: grid;
-    grid-template-columns: minmax(520px, 1fr) minmax(420px, 520px);
+    grid-template-columns: minmax(480px, 0.92fr) minmax(420px, 0.58fr);
     min-height: 100vh;
 }
 
-.phidie-stage {
+.brand-panel {
     position: relative;
     display: flex;
     align-items: center;
     overflow: hidden;
-    padding: 56px 64px;
+    padding: 64px;
     background:
-        linear-gradient(135deg, rgba(13, 42, 69, 0.94), rgba(20, 82, 96, 0.9)),
-        linear-gradient(90deg, #0f1f34, #146a75);
+        linear-gradient(135deg, rgba(10, 27, 47, 0.96), rgba(15, 78, 91, 0.92)),
+        #0b1f34;
 }
 
-.phidie-stage::before {
+.brand-panel::before {
     content: "";
     position: absolute;
     inset: 0;
     background-image:
         linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
-    background-size: 42px 42px;
-    mask-image: linear-gradient(90deg, #000 0%, transparent 85%);
+    background-size: 44px 44px;
+    opacity: 0.8;
 }
 
-.phidie-stage-inner {
+.brand-panel::after {
+    content: "";
+    position: absolute;
+    right: -160px;
+    bottom: -180px;
+    width: 520px;
+    height: 520px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: radial-gradient(circle, rgba(77, 199, 185, 0.2), transparent 62%);
+}
+
+.brand-content {
     position: relative;
     z-index: 1;
     width: 100%;
-    max-width: 720px;
+    max-width: 620px;
 }
 
-.brand-mark {
+.brand-logo {
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    margin-bottom: 64px;
+    margin-bottom: 72px;
     color: #fff;
     font-size: 18px;
-    font-weight: 700;
-    letter-spacing: 0.02em;
+    font-weight: 720;
 }
 
-.brand-mark-icon {
+.brand-logo-mark {
     display: grid;
     width: 42px;
     height: 42px;
     place-items: center;
-    border-radius: 10px;
-    background: #ffffff;
-    color: #126172;
-    font-weight: 900;
+    border-radius: 12px;
+    background: #fff;
+    color: #0f5f6d;
+    font-size: 18px;
+    font-weight: 800;
 }
 
-.stage-eyebrow {
-    margin-bottom: 18px;
-    color: #9ee6d6;
-    font-size: 13px;
+.brand-kicker {
+    margin-bottom: 16px;
+    color: #8fe4d8;
+    font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.18em;
 }
 
-.stage-title {
-    max-width: 640px;
-    margin: 0 0 20px;
+.brand-title {
+    max-width: 580px;
+    margin: 0;
     color: #fff;
-    font-size: 44px;
+    font-size: 42px;
     font-weight: 760;
-    line-height: 1.14;
+    line-height: 1.18;
 }
 
-.stage-copy {
-    max-width: 620px;
-    margin: 0 0 44px;
-    color: rgba(255, 255, 255, 0.76);
-    font-size: 16px;
-    line-height: 1.8;
-}
-
-.workflow {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 14px;
-    max-width: 680px;
-}
-
-.workflow-step {
-    min-height: 142px;
-    padding: 18px;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(14px);
-}
-
-.workflow-step strong {
-    display: block;
-    margin-bottom: 10px;
-    color: #fff;
+.brand-summary {
+    max-width: 560px;
+    margin: 22px 0 42px;
+    color: rgba(255, 255, 255, 0.72);
     font-size: 15px;
+    line-height: 1.85;
 }
 
-.workflow-step span {
-    color: rgba(255, 255, 255, 0.68);
+.capability-list {
+    display: grid;
+    gap: 12px;
+    max-width: 520px;
+}
+
+.capability-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.075);
+    color: rgba(255, 255, 255, 0.8);
     font-size: 13px;
-    line-height: 1.65;
+    line-height: 1.6;
 }
 
-.login-pane {
+.capability-dot {
+    flex: 0 0 auto;
+    width: 8px;
+    height: 8px;
+    margin-top: 6px;
+    border-radius: 50%;
+    background: #8fe4d8;
+    box-shadow: 0 0 0 4px rgba(143, 228, 216, 0.12);
+}
+
+.login-panel {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 48px;
+    padding: 56px 48px;
     background: #fbfcfe;
 }
 
-.login-box {
+.login-card {
     width: 100%;
     max-width: 380px;
 }
 
-.login-box-header {
-    margin-bottom: 34px;
+.login-header {
+    margin-bottom: 32px;
 }
 
-.login-product {
+.login-label {
     margin-bottom: 12px;
-    color: #126172;
-    font-size: 14px;
-    font-weight: 700;
+    color: #0f5f6d;
+    font-size: 12px;
+    font-weight: 800;
     letter-spacing: 0.16em;
 }
 
-.login-box h1 {
+.login-header h1 {
     margin: 0 0 10px;
-    color: #111827;
+    color: #101828;
     font-size: 28px;
     font-weight: 760;
 }
 
-.login-box p {
+.login-header p {
     margin: 0;
     color: #667085;
     font-size: 14px;
@@ -203,14 +215,18 @@ body.login-page .container-centering {
     border-radius: 8px;
     outline: none;
     background: #fff;
-    color: #111827;
+    color: #101828;
     font-size: 14px;
     transition: border-color 0.18s, box-shadow 0.18s;
 }
 
+.phidie-form-group input::placeholder {
+    color: #98a2b3;
+}
+
 .phidie-form-group input:focus {
-    border-color: #139283;
-    box-shadow: 0 0 0 3px rgba(19, 146, 131, 0.13);
+    border-color: #0f8a7d;
+    box-shadow: 0 0 0 3px rgba(15, 138, 125, 0.14);
 }
 
 #btn-login {
@@ -219,17 +235,18 @@ body.login-page .container-centering {
     margin-top: 8px;
     border: none;
     border-radius: 8px;
-    background: #126172;
+    background: #0f5f6d;
     color: #fff;
     cursor: pointer;
     font-family: inherit;
     font-size: 15px;
-    font-weight: 700;
-    transition: background 0.18s, transform 0.18s;
+    font-weight: 720;
+    transition: background 0.18s, transform 0.18s, box-shadow 0.18s;
 }
 
 #btn-login:hover {
-    background: #0f5060;
+    background: #0b4e5a;
+    box-shadow: 0 10px 24px rgba(15, 95, 109, 0.18);
     transform: translateY(-1px);
 }
 
@@ -237,18 +254,16 @@ body.login-page .container-centering {
     transform: translateY(0);
 }
 
-.assurance {
-    display: grid;
-    gap: 8px;
+.login-note {
     margin-top: 28px;
-    padding-top: 24px;
+    padding-top: 22px;
     border-top: 1px solid #eaecf0;
     color: #667085;
     font-size: 12px;
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
-.assurance b {
+.login-note strong {
     color: #344054;
 }
 
@@ -257,68 +272,65 @@ body.login-page .container-centering {
         grid-template-columns: 1fr;
     }
 
-    .phidie-stage {
-        padding: 36px 28px;
+    .brand-panel {
+        min-height: 420px;
+        padding: 40px 28px;
     }
 
-    .brand-mark {
-        margin-bottom: 34px;
+    .brand-logo {
+        margin-bottom: 42px;
     }
 
-    .stage-title {
+    .brand-title {
         font-size: 32px;
     }
 
-    .workflow {
-        grid-template-columns: 1fr;
+    .brand-summary {
+        margin-bottom: 26px;
     }
 
-    .workflow-step {
-        min-height: auto;
-    }
-
-    .login-pane {
-        padding: 38px 24px;
+    .login-panel {
+        padding: 40px 24px;
     }
 }
 </style>
 
-<section class="phidie-stage">
-    <div class="phidie-stage-inner">
-        <div class="brand-mark">
-            <span class="brand-mark-icon">P</span>
+<section class="brand-panel">
+    <div class="brand-content">
+        <div class="brand-logo">
+            <span class="brand-logo-mark">P</span>
             <span>飞迭 PHIDIE</span>
         </div>
 
-        <div class="stage-eyebrow">INTELLIGENT CUSTOMER MANAGEMENT</div>
-        <h1 class="stage-title">把客户邮件、网站询盘和客服消息汇成一条可跟进的客户线索。</h1>
-        <p class="stage-copy">
-            系统识别客户类型、需求阶段和下一步动作，并基于企业知识库生成可确认的回复建议，让销售、客服与技术支持在同一个工作台协作。
+        <div class="brand-kicker">CUSTOMER OPERATIONS</div>
+        <h1 class="brand-title">统一客户消息，清晰推进每一次跟进。</h1>
+        <p class="brand-summary">
+            面向邮件、网站询盘和客服消息的客户管理工作台，帮助团队识别客户需求、沉淀知识依据，并形成可确认的回复建议。
         </p>
 
-        <div class="workflow" aria-label="核心流程">
-            <div class="workflow-step">
-                <strong>统一进入</strong>
-                <span>邮件、询盘、客服会话沉淀到客户记录，减少分散沟通和重复录入。</span>
+        <div class="capability-list">
+            <div class="capability-item">
+                <span class="capability-dot"></span>
+                <span>客户邮件、网站询盘、客服消息统一进入系统。</span>
             </div>
-            <div class="workflow-step">
-                <strong>自动识别</strong>
-                <span>标记客户类型、需求阶段、紧急程度和下一步动作，方便分派跟进。</span>
+            <div class="capability-item">
+                <span class="capability-dot"></span>
+                <span>自动标记客户类型、需求阶段和下一步动作。</span>
             </div>
-            <div class="workflow-step">
-                <strong>确认回复</strong>
-                <span>结合知识库生成回复草稿，由人员确认后再发送，避免不可控自动答复。</span>
+            <div class="capability-item">
+                <span class="capability-dot"></span>
+                <span>结合企业知识库生成可确认的回复建议。</span>
             </div>
         </div>
     </div>
 </section>
 
-<section class="login-pane">
-    <div class="login-box">
-        <div class="login-box-header">
-            <div class="login-product">PHIDIE CRM</div>
-            <h1>登录工作台</h1>
-            <p>查看客户线索、处理客户消息，并确认系统生成的回复建议。</p>
+<section class="login-panel">
+    <div class="login-card">
+        <div class="login-header">
+            <div class="login-label">PHIDIE CRM</div>
+            <h1>登录系统</h1>
+            <p>进入客户管理工作台，处理线索、消息与跟进任务。</p>
         </div>
 
         {{#if message}}
@@ -357,9 +369,8 @@ body.login-page .container-centering {
             <button id="btn-login" type="button" tabindex="3">登录</button>
         </form>
 
-        <div class="assurance">
-            <span><b>人工确认优先：</b>AI 回复只作为建议，确认后才进入正式沟通。</span>
-            <span><b>知识库驱动：</b>建议内容保留依据，便于销售与客服核对。</span>
-        </div>
+        <p class="login-note">
+            <strong>安全提示：</strong>请使用企业账号登录，所有回复建议需确认后再发送。
+        </p>
     </div>
 </section>
