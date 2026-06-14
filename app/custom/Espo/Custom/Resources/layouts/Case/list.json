@@ -1,0 +1,10 @@
+[
+    {"name": "number", "link": "true", "width": 10},
+    {"name": "name", "link": "true"},
+    {"name": "customerType", "width": 13},
+    {"name": "demandStage", "width": 16},
+    {"name": "nextAction", "width": 16},
+    {"name": "replyApprovalStatus", "width": 12},
+    {"name": "sourceChannel", "width": 13},
+    {"name": "status", "width": 10}
+]

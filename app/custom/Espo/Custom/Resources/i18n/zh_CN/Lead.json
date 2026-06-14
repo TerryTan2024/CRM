@@ -1,0 +1,57 @@
+{
+    "fields": {
+        "customerType": "客户类型",
+        "demandStage": "需求阶段",
+        "nextAction": "下一步动作",
+        "sourceChannel": "来源渠道",
+        "aiReplySuggestion": "AI 回复建议",
+        "knowledgeBaseEvidence": "知识库依据",
+        "replyApprovalStatus": "回复确认状态"
+    },
+    "options": {
+        "customerType": {
+            "New Inquiry": "新询盘",
+            "Potential Buyer": "潜在采购客户",
+            "Existing Customer": "现有客户",
+            "Partner": "渠道伙伴",
+            "After-Sales": "售后客户",
+            "Supplier": "供应商",
+            "Other": "其他"
+        },
+        "demandStage": {
+            "Initial Contact": "初次接触",
+            "Requirement Clarification": "需求澄清",
+            "Solution Matching": "方案匹配",
+            "Quotation": "报价阶段",
+            "Negotiation": "谈判阶段",
+            "Won": "已成交",
+            "Lost": "已丢失",
+            "On Hold": "暂缓"
+        },
+        "nextAction": {
+            "Confirm Requirement": "确认需求",
+            "Send Product Info": "发送产品资料",
+            "Prepare Quotation": "准备报价",
+            "Schedule Meeting": "预约会议",
+            "Assign Specialist": "分配专家",
+            "Follow Up": "继续跟进",
+            "Escalate Service": "升级客服处理",
+            "No Action": "暂无动作"
+        },
+        "sourceChannel": {
+            "Email": "客户邮件",
+            "Website Inquiry": "网站询盘",
+            "Customer Service Message": "客服消息",
+            "Phone": "电话",
+            "Manual Entry": "手动录入",
+            "Other": "其他"
+        },
+        "replyApprovalStatus": {
+            "Draft": "草稿",
+            "Needs Review": "待确认",
+            "Approved": "已确认",
+            "Sent": "已发送",
+            "Rejected": "已驳回"
+        }
+    }
+}

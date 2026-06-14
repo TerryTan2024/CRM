@@ -1,4 +1,4 @@
-/* 隐藏登录页 Powered by EspoCRM */
+/* PHIDIE CRM brand layer. */
 .footer .powered-by,
 .login-footer,
 [data-name="poweredBy"],
@@ -6,7 +6,32 @@
     display: none !important;
 }
 
-/* 登录页标题用公司名替代 */
-.login-form .panel-heading {
-    background: #1a73e8;
+body:not(.login-page) footer .credit {
+    color: #667085;
+}
+
+body:not(.login-page) footer .credit a[href*="espocrm"] {
+    display: none !important;
+}
+
+.navbar .navbar-brand,
+.side-navbar .navbar-brand {
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.navbar .navbar-brand::after,
+.side-navbar .navbar-brand::after {
+    content: "智能客户管理";
+    display: inline-block;
+    margin-left: 8px;
+    color: #126172;
+    font-size: 12px;
+    font-weight: 600;
+    vertical-align: middle;
+}
+
+.field[data-name="aiReplySuggestion"] textarea,
+.field[data-name="knowledgeBaseEvidence"] textarea {
+    min-height: 132px;
 }

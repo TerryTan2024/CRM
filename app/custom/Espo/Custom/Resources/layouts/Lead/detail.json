@@ -1,0 +1,30 @@
+[
+    {
+        "label": "智能识别",
+        "rows": [
+            [{"name": "customerType"}, {"name": "demandStage"}],
+            [{"name": "sourceChannel"}, {"name": "nextAction"}],
+            [{"name": "replyApprovalStatus"}, {"name": "assignedUser"}],
+            [{"name": "aiReplySuggestion", "fullWidth": true}],
+            [{"name": "knowledgeBaseEvidence", "fullWidth": true}]
+        ]
+    },
+    {
+        "label": "客户信息",
+        "rows": [
+            [{"name": "name"}, {"name": "accountName"}],
+            [{"name": "emailAddress"}, {"name": "phoneNumber"}],
+            [{"name": "title"}, {"name": "website"}],
+            [{"name": "address"}, false]
+        ]
+    },
+    {
+        "label": "需求与跟进",
+        "rows": [
+            [{"name": "status"}, {"name": "source"}],
+            [{"name": "opportunityAmount"}, {"name": "campaign"}],
+            [{"name": "industry"}, false],
+            [{"name": "description", "fullWidth": true}]
+        ]
+    }
+]

@@ -1,0 +1,68 @@
+{
+    "fields": {
+        "customerType": {
+            "type": "enum",
+            "options": ["", "New Inquiry", "Potential Buyer", "Existing Customer", "Partner", "After-Sales", "Supplier", "Other"],
+            "audited": true,
+            "displayAsLabel": true,
+            "style": {
+                "New Inquiry": "primary",
+                "Potential Buyer": "success",
+                "Existing Customer": "info",
+                "After-Sales": "warning"
+            }
+        },
+        "demandStage": {
+            "type": "enum",
+            "options": ["", "Initial Contact", "Requirement Clarification", "Solution Matching", "Quotation", "Negotiation", "Won", "Lost", "On Hold"],
+            "audited": true,
+            "displayAsLabel": true,
+            "style": {
+                "Initial Contact": "info",
+                "Requirement Clarification": "primary",
+                "Solution Matching": "primary",
+                "Quotation": "warning",
+                "Negotiation": "warning",
+                "Won": "success",
+                "Lost": "danger"
+            }
+        },
+        "nextAction": {
+            "type": "enum",
+            "options": ["", "Confirm Requirement", "Send Product Info", "Prepare Quotation", "Schedule Meeting", "Assign Specialist", "Follow Up", "Escalate Service", "No Action"],
+            "audited": true,
+            "displayAsLabel": true
+        },
+        "sourceChannel": {
+            "type": "enum",
+            "options": ["", "Email", "Website Inquiry", "Customer Service Message", "Phone", "Manual Entry", "Other"],
+            "audited": true,
+            "displayAsLabel": true
+        },
+        "aiReplySuggestion": {
+            "type": "text",
+            "audited": true,
+            "preview": true,
+            "cutHeight": 280
+        },
+        "knowledgeBaseEvidence": {
+            "type": "text",
+            "preview": true,
+            "cutHeight": 220
+        },
+        "replyApprovalStatus": {
+            "type": "enum",
+            "options": ["Draft", "Needs Review", "Approved", "Sent", "Rejected"],
+            "default": "Draft",
+            "audited": true,
+            "displayAsLabel": true,
+            "style": {
+                "Draft": "info",
+                "Needs Review": "warning",
+                "Approved": "success",
+                "Sent": "success",
+                "Rejected": "danger"
+            }
+        }
+    }
+}

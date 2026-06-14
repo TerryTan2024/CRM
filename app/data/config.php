@@ -15,7 +15,7 @@ return [
   'recordsPerPageSmall' => 5,
   'recordsPerPageSelect' => 10,
   'recordsPerPageKanban' => 5,
-  'applicationName' => '飞迭 PHIDIE',
+  'applicationName' => '飞迭智能客户管理系统',
   'timeZone' => 'UTC',
   'dateFormat' => 'DD.MM.YYYY',
   'timeFormat' => 'HH:mm',
@@ -30,7 +30,7 @@ return [
   'baseCurrency' => 'USD',
   'currencyNoJoinMode' => false,
   'outboundEmailIsShared' => false,
-  'outboundEmailFromName' => 'EspoCRM',
+  'outboundEmailFromName' => 'PHIDIE CRM',
   'outboundEmailFromAddress' => NULL,
   'smtpServer' => NULL,
   'smtpPort' => 587,
@@ -50,7 +50,7 @@ return [
     0 => (object) [
       'type' => 'divider',
       'id' => '342567',
-      'text' => '$CRM'
+      'text' => '客户中枢'
     ],
     1 => 'Account',
     2 => 'Contact',
@@ -58,7 +58,7 @@ return [
     4 => 'Opportunity',
     5 => (object) [
       'type' => 'divider',
-      'text' => '$Activities',
+      'text' => '跟进协作',
       'id' => '219419'
     ],
     6 => 'Email',
@@ -69,7 +69,7 @@ return [
     11 => (object) [
       'type' => 'divider',
       'id' => '655187',
-      'text' => '$Support'
+      'text' => '消息处理'
     ],
     12 => 'Case',
     13 => 'KnowledgeBaseArticle',
@@ -81,20 +81,20 @@ return [
     15 => '_delimiter_',
     16 => (object) [
       'type' => 'divider',
-      'text' => '$Marketing',
+      'text' => '增长运营',
       'id' => '463280'
     ],
     17 => 'Campaign',
     18 => 'TargetList',
     19 => (object) [
       'type' => 'divider',
-      'text' => '$Business',
+      'text' => '知识与文件',
       'id' => '518202'
     ],
     20 => 'Document',
     21 => (object) [
       'type' => 'divider',
-      'text' => '$Organization',
+      'text' => '系统管理',
       'id' => '566592'
     ],
     22 => 'User',
@@ -192,7 +192,7 @@ return [
   'displayListViewRecordCount' => true,
   'dashboardLayout' => [
     0 => (object) [
-      'name' => 'My Espo',
+      'name' => '智能客户工作台',
       'layout' => [
         0 => (object) [
           'id' => 'default-stream',

@@ -1,0 +1,23 @@
+[
+    {
+        "label": "智能处理",
+        "rows": [
+            [{"name": "customerType"}, {"name": "demandStage"}],
+            [{"name": "sourceChannel"}, {"name": "nextAction"}],
+            [{"name": "replyApprovalStatus"}, {"name": "assignedUser"}],
+            [{"name": "aiReplySuggestion", "fullWidth": true}],
+            [{"name": "knowledgeBaseEvidence", "fullWidth": true}]
+        ]
+    },
+    {
+        "label": "消息与客户",
+        "rows": [
+            [{"name": "name"}, {"name": "number"}],
+            [{"name": "status"}, {"name": "account"}],
+            [{"name": "priority"}, {"name": "contacts"}],
+            [{"name": "type"}, {"name": "lead"}],
+            [{"name": "description", "fullWidth": true}],
+            [{"name": "attachments", "fullWidth": true}]
+        ]
+    }
+]
