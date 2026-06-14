@@ -1,0 +1,12 @@
+/* 隐藏登录页 Powered by EspoCRM */
+.footer .powered-by,
+.login-footer,
+[data-name="poweredBy"],
+.powered-by-text {
+    display: none !important;
+}
+
+/* 登录页标题用公司名替代 */
+.login-form .panel-heading {
+    background: #1a73e8;
+}

@@ -1,0 +1,19 @@
+# Local runtime secrets
+.env
+deploy/.env
+app/data/config-internal.php
+
+# EspoCRM runtime output
+app/data/cache/
+app/data/tmp/
+app/data/logs/
+
+# Local editor and OS files
+.DS_Store
+Thumbs.db
+*.log
+
+# Local-only backup bundles
+*.tgz
+*.tar.gz
+!database/*.sql.gz
