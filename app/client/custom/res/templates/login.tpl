@@ -36,7 +36,7 @@ body .container.content {
 
 .pd-split {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(360px, 1fr);
+    grid-template-columns: minmax(0, 40fr) minmax(420px, 60fr);
     width: 100vw;
     height: 100vh;
     overflow: hidden;
@@ -156,7 +156,7 @@ body .container.content {
     align-items: center;
     justify-content: center;
     min-width: 0;
-    padding: 48px;
+    padding: 40px 56px;
     background: #f6f8fb;
 }
 
@@ -172,7 +172,7 @@ body .container.content {
 
 #login.panel {
     width: 100% !important;
-    max-width: 380px !important;
+    max-width: 400px !important;
     margin: 0 !important;
     border: 1px solid #e5e7eb !important;
     border-radius: 10px !important;
@@ -185,11 +185,11 @@ body .container.content {
 }
 
 #login .panel-body {
-    padding: 42px !important;
+    padding: 34px 38px !important;
 }
 
 .pd-login-copy {
-    margin-bottom: 28px;
+    margin-bottom: 22px;
 }
 
 .pd-login-label {
@@ -250,6 +250,7 @@ body .container.content {
 
 [data-role="password-input-container"] {
     position: relative;
+    display: block;
 }
 
 [data-role="password-input-container"] input {
@@ -259,8 +260,15 @@ body .container.content {
 [data-action="toggleShowPassword"] {
     position: absolute;
     top: 50%;
-    right: 12px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
     color: #94a3b8;
+    line-height: 1;
+    text-decoration: none;
     transform: translateY(-50%);
 }
 
@@ -309,7 +317,7 @@ body .container.content {
 
 @media (max-width: 980px) and (min-width: 521px) {
     .pd-split {
-        grid-template-columns: minmax(0, 1fr) minmax(320px, 1fr);
+        grid-template-columns: minmax(0, 40fr) minmax(340px, 60fr);
     }
 
     .pd-left {
@@ -325,15 +333,15 @@ body .container.content {
     }
 
     .pd-right {
-        padding: 28px;
+        padding: 28px 32px;
     }
 
     #login.panel {
-        max-width: 340px !important;
+        max-width: 360px !important;
     }
 
     #login .panel-body {
-        padding: 32px !important;
+        padding: 30px !important;
     }
 }
 
