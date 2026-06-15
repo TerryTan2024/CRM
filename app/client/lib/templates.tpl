@@ -490,7 +490,7 @@ body .container.content {
         <div class="pd-brand-content">
             <div class="pd-brand">
                 <span class="pd-brand-mark">P</span>
-                <span>飞迭 PHIDIE</span>
+                <span>飞迭智客</span>
             </div>
 
             <div>
