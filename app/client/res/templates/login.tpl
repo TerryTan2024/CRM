@@ -108,29 +108,24 @@ body .container.content {
 .pd-brand-mark {
     position: relative;
     display: inline-flex;
-    width: 48px;
-    height: 48px;
+    width: 42px;
+    height: 42px;
     align-items: center;
     justify-content: center;
     flex: 0 0 auto;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.92);
-    border-radius: 15px;
-    background: #fff;
-    box-shadow: 0 14px 34px rgba(33, 64, 112, 0.12);
 }
 
 .pd-brand-mark::before {
     content: "";
-    width: 32px;
-    height: 32px;
+    width: 42px;
+    height: 42px;
     border: 1px solid rgba(148, 163, 184, 0.22);
     border-radius: 50%;
     background:
         conic-gradient(from 212deg at 48% 52%, rgba(219, 234, 254, 0.98), rgba(255, 255, 255, 0.94), rgba(254, 243, 199, 0.86), rgba(226, 232, 240, 0.82), rgba(219, 234, 254, 0.98)),
         radial-gradient(circle at 42% 48%, rgba(255, 255, 255, 0.98) 0 16%, transparent 18%),
         radial-gradient(circle at 58% 64%, rgba(37, 99, 235, 0.12) 0 7%, transparent 12%);
-    box-shadow: inset 0 1px 10px rgba(255, 255, 255, 0.7), 0 8px 18px rgba(15, 23, 42, 0.08);
+    box-shadow: inset 0 1px 12px rgba(255, 255, 255, 0.75), 0 8px 20px rgba(15, 23, 42, 0.07);
 }
 
 .pd-title {
