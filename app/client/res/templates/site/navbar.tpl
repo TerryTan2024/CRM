@@ -10,8 +10,6 @@
             ><span class="phidie-nav-brand">
                 <span class="phidie-nav-disc" aria-hidden="true"></span>
                 <span class="phidie-nav-name">飞迭智客</span>
-                <span class="phidie-nav-divider" aria-hidden="true"></span>
-                <span class="phidie-company-logo">企业 Logo</span>
             </span></a></div>
         <a role="button" class="side-menu-button"><span class="fas fa-bars"></span></a>
     </div>
