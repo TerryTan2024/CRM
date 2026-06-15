@@ -26,9 +26,7 @@ class ProcessCustomerEmails implements JobDataLess
     {
         $emails = $this->entityManager
             ->getRDBRepositoryByClass(Email::class)
-            ->where([
-                'status' => Email::STATUS_ARCHIVED,
-            ])
+            ->where(['status' => Email::STATUS_ARCHIVED])
             ->order(Field::CREATED_AT, 'DESC')
             ->limit(0, self::LIMIT)
             ->sth()
@@ -69,6 +67,7 @@ class ProcessCustomerEmails implements JobDataLess
 
         $classification = $this->classify($text);
         $knowledgeEvidence = $this->findKnowledgeEvidence($text);
+        $now = new DateTimeImmutable('now', new DateTimeZone('UTC'));
 
         $case = $this->entityManager
             ->getRDBRepositoryByClass(CaseObj::class)
@@ -80,16 +79,20 @@ class ProcessCustomerEmails implements JobDataLess
             'priority' => $classification['priority'],
             'type' => $classification['type'],
             'description' => $this->buildDescription($subject, $from, $body),
+            'inquiryDate' => $now->format('Y-m-d'),
+            'sourceCountry' => $classification['sourceCountry'],
             'sourceChannel' => 'Email',
             'sourceEmailId' => $email->getId(),
             'sourceEmailFrom' => $from,
             'customerType' => $classification['customerType'],
+            'inquiryValue' => $classification['inquiryValue'],
+            'salesStage' => $classification['salesStage'],
             'demandStage' => $classification['demandStage'],
             'nextAction' => $classification['nextAction'],
             'replyApprovalStatus' => 'Needs Review',
             'aiReplySuggestion' => $this->buildReplySuggestion($classification, $knowledgeEvidence),
             'knowledgeBaseEvidence' => $knowledgeEvidence,
-            'aiProcessedAt' => (new DateTimeImmutable('now', new DateTimeZone('UTC')))->format('Y-m-d H:i:s'),
+            'aiProcessedAt' => $now->format('Y-m-d H:i:s'),
         ]);
 
         $this->entityManager->saveEntity($case);
@@ -101,64 +104,74 @@ class ProcessCustomerEmails implements JobDataLess
     {
         return $this->entityManager
             ->getRDBRepositoryByClass(CaseObj::class)
-            ->where([
-                'sourceEmailId' => $email->getId(),
-            ])
+            ->where(['sourceEmailId' => $email->getId()])
             ->findOne() !== null;
     }
 
     /**
-     * @return array{customerType: string, demandStage: string, nextAction: string, priority: string, type: string}
+     * @return array{
+     *   customerType: string,
+     *   inquiryValue: string,
+     *   salesStage: string,
+     *   demandStage: string,
+     *   nextAction: string,
+     *   sourceCountry: string,
+     *   priority: string,
+     *   type: string
+     * }
      */
     private function classify(string $text): array
     {
         $lower = strtolower($text);
+        $country = $this->detectCountry($lower);
 
-        if ($this->containsAny($lower, ['售后', '退货', '维修', '投诉', '质量', 'broken', 'return', 'complaint'])) {
+        if ($this->containsAny($lower, ['complaint', 'return', 'refund', 'broken', 'quality issue', 'after-sales'])) {
             return [
                 'customerType' => 'After-Sales',
+                'inquiryValue' => 'None',
+                'salesStage' => 'L6 No Reply',
                 'demandStage' => 'Requirement Clarification',
                 'nextAction' => 'Escalate Service',
-                'priority' => $this->containsAny($lower, ['投诉', 'urgent', 'asap']) ? 'Urgent' : 'High',
+                'sourceCountry' => $country,
+                'priority' => $this->containsAny($lower, ['urgent', 'asap']) ? 'Urgent' : 'High',
                 'type' => 'Problem',
             ];
         }
 
-        if ($this->containsAny($lower, ['供应商', '代理', '合作', 'supplier', 'vendor', 'partner'])) {
+        if ($this->containsAny($lower, ['supplier', 'vendor', 'agent', 'distributor', 'partner'])) {
             return [
                 'customerType' => 'Supplier',
+                'inquiryValue' => 'Low',
+                'salesStage' => 'L1 New Inquiry',
                 'demandStage' => 'Initial Contact',
                 'nextAction' => 'Assign Specialist',
+                'sourceCountry' => $country,
                 'priority' => 'Normal',
                 'type' => 'Question',
             ];
         }
 
-        if ($this->containsAny($lower, ['老客户', '复购', '订单号', 'order number', 'repeat order'])) {
+        if ($this->containsAny($lower, ['quote', 'price', 'quotation', 'rfq', 'bulk order', 'order quantity'])) {
             return [
-                'customerType' => 'Existing Customer',
-                'demandStage' => 'Requirement Clarification',
-                'nextAction' => 'Follow Up',
-                'priority' => 'Normal',
-                'type' => 'Question',
-            ];
-        }
-
-        if ($this->containsAny($lower, ['报价', '价格', 'quote', 'price', 'quotation'])) {
-            return [
-                'customerType' => 'Potential Buyer',
+                'customerType' => 'Potential Customer',
+                'inquiryValue' => $this->containsAny($lower, ['bulk order', 'container', '10000', 'large quantity']) ? 'High' : 'Medium',
+                'salesStage' => 'L4 Proposal Quotation',
                 'demandStage' => 'Quotation',
                 'nextAction' => 'Prepare Quotation',
+                'sourceCountry' => $country,
                 'priority' => 'Normal',
                 'type' => 'Question',
             ];
         }
 
-        if ($this->containsAny($lower, ['样品', '规格', '参数', 'sample', 'spec', 'requirement'])) {
+        if ($this->containsAny($lower, ['sample', 'spec', 'requirement', 'catalog', 'product details'])) {
             return [
                 'customerType' => 'New Inquiry',
+                'inquiryValue' => 'Medium',
+                'salesStage' => 'L3 Requirement Confirmed',
                 'demandStage' => 'Requirement Clarification',
                 'nextAction' => 'Confirm Requirement',
+                'sourceCountry' => $country,
                 'priority' => 'Normal',
                 'type' => 'Question',
             ];
@@ -166,11 +179,48 @@ class ProcessCustomerEmails implements JobDataLess
 
         return [
             'customerType' => 'New Inquiry',
+            'inquiryValue' => 'Low',
+            'salesStage' => 'L1 New Inquiry',
             'demandStage' => 'Initial Contact',
             'nextAction' => 'Send Product Info',
+            'sourceCountry' => $country,
             'priority' => 'Normal',
             'type' => 'Question',
         ];
+    }
+
+    private function detectCountry(string $text): string
+    {
+        $map = [
+            'usa' => 'United States',
+            'united states' => 'United States',
+            'america' => 'United States',
+            'uk' => 'United Kingdom',
+            'united kingdom' => 'United Kingdom',
+            'germany' => 'Germany',
+            'france' => 'France',
+            'italy' => 'Italy',
+            'spain' => 'Spain',
+            'india' => 'India',
+            'pakistan' => 'Pakistan',
+            'bangladesh' => 'Bangladesh',
+            'vietnam' => 'Vietnam',
+            'thailand' => 'Thailand',
+            'indonesia' => 'Indonesia',
+            'brazil' => 'Brazil',
+            'mexico' => 'Mexico',
+            'canada' => 'Canada',
+            'australia' => 'Australia',
+            'china' => 'China',
+        ];
+
+        foreach ($map as $needle => $country) {
+            if (str_contains($text, $needle)) {
+                return $country;
+            }
+        }
+
+        return '';
     }
 
     private function containsAny(string $text, array $keywords): bool
@@ -188,9 +238,7 @@ class ProcessCustomerEmails implements JobDataLess
     {
         $articles = $this->entityManager
             ->getRDBRepositoryByClass(KnowledgeBaseArticle::class)
-            ->where([
-                'status' => KnowledgeBaseArticle::STATUS_PUBLISHED,
-            ])
+            ->where(['status' => KnowledgeBaseArticle::STATUS_PUBLISHED])
             ->order(Field::CREATED_AT, 'DESC')
             ->limit(0, 30)
             ->find();
@@ -219,10 +267,10 @@ class ProcessCustomerEmails implements JobDataLess
         $top = array_slice($matched, 0, 3);
 
         if ($top === []) {
-            return '未匹配到知识库条目，请先补充产品、报价、售后、交付等知识库内容。';
+            return 'No matching knowledge-base article found yet. Add product, quotation, delivery, and after-sales articles.';
         }
 
-        $lines = ['匹配到的知识库依据：'];
+        $lines = ['Matched knowledge-base evidence:'];
 
         foreach ($top as $item) {
             $lines[] = "- {$item['name']}";
@@ -234,8 +282,7 @@ class ProcessCustomerEmails implements JobDataLess
     private function scoreArticle(string $emailText, string $articleText): int
     {
         $keywords = [
-            '报价', '价格', '样品', '规格', '交期', '售后', '退货', '投诉',
-            'quote', 'price', 'sample', 'spec', 'delivery', 'return', 'complaint',
+            'quote', 'price', 'sample', 'spec', 'delivery', 'return', 'complaint', 'catalog', 'warranty',
         ];
 
         $score = 0;
@@ -243,8 +290,6 @@ class ProcessCustomerEmails implements JobDataLess
         $articleLower = strtolower($articleText);
 
         foreach ($keywords as $keyword) {
-            $keyword = strtolower($keyword);
-
             if (str_contains($emailLower, $keyword) && str_contains($articleLower, $keyword)) {
                 $score++;
             }
@@ -258,80 +303,39 @@ class ProcessCustomerEmails implements JobDataLess
         $subject = trim($subject);
 
         if ($subject === '') {
-            return '电子邮件客户消息';
+            return 'Email Customer Message';
         }
 
         if (function_exists('mb_substr')) {
-            return '邮件：' . mb_substr($subject, 0, 80);
+            return 'Email: ' . mb_substr($subject, 0, 80);
         }
 
-        return '邮件：' . substr($subject, 0, 80);
+        return 'Email: ' . substr($subject, 0, 80);
     }
 
     private function buildDescription(string $subject, string $from, string $body): string
     {
-        return trim("来源邮箱：{$from}\n邮件主题：{$subject}\n\n邮件内容：\n{$body}");
+        return trim("Source email: {$from}\nSubject: {$subject}\n\nMessage:\n{$body}");
     }
 
     private function buildReplySuggestion(array $classification, string $knowledgeEvidence): string
     {
-        $type = $this->translateCustomerType($classification['customerType']);
-        $stage = $this->translateStage($classification['demandStage']);
-        $action = $this->translateAction($classification['nextAction']);
-
         return <<<TEXT
-您好，
+Hello,
 
-已收到您的邮件。根据您提供的信息，我们初步判断该客户类型为：{$type}，当前需求阶段为：{$stage}。
+Thank you for your message. We have received your inquiry and made an initial classification:
 
-建议下一步：{$action}。
+Customer type: {$classification['customerType']}
+Inquiry value: {$classification['inquiryValue']}
+Sales stage: {$classification['salesStage']}
 
-请您确认以下信息是否完整：产品/服务需求、数量或规模、交付时间、预算范围、联系人与联系方式。确认后我们将进一步给出更准确的方案或报价。
+Suggested next step: {$classification['nextAction']}.
+
+Please confirm the product requirements, quantity, target delivery time, destination country, and contact information. After confirmation, we will provide a more accurate proposal or quotation.
 
 {$knowledgeEvidence}
 
-请业务人员确认内容后再发送。
+Please review and confirm before sending.
 TEXT;
-    }
-
-    private function translateCustomerType(string $value): string
-    {
-        return [
-            'New Inquiry' => '新询盘',
-            'Potential Buyer' => '潜在采购客户',
-            'Existing Customer' => '现有客户',
-            'Partner' => '渠道伙伴',
-            'After-Sales' => '售后客户',
-            'Supplier' => '供应商',
-            'Other' => '其他',
-        ][$value] ?? $value;
-    }
-
-    private function translateStage(string $value): string
-    {
-        return [
-            'Initial Contact' => '初次接触',
-            'Requirement Clarification' => '需求澄清',
-            'Solution Matching' => '方案匹配',
-            'Quotation' => '报价阶段',
-            'Negotiation' => '谈判阶段',
-            'Won' => '已成交',
-            'Lost' => '已丢失',
-            'On Hold' => '暂缓',
-        ][$value] ?? $value;
-    }
-
-    private function translateAction(string $value): string
-    {
-        return [
-            'Confirm Requirement' => '确认需求',
-            'Send Product Info' => '发送产品资料',
-            'Prepare Quotation' => '准备报价',
-            'Schedule Meeting' => '预约会议',
-            'Assign Specialist' => '分配专员',
-            'Follow Up' => '继续跟进',
-            'Escalate Service' => '升级客服处理',
-            'No Action' => '暂无动作',
-        ][$value] ?? $value;
     }
 }

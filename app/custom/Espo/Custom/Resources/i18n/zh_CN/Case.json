@@ -1,9 +1,13 @@
 {
     "fields": {
+        "inquiryDate": "\u65e5\u671f",
+        "sourceCountry": "\u6765\u6e90\u56fd\u5bb6",
+        "sourceChannel": "\u6765\u6e90\u6e20\u9053",
         "customerType": "\u5ba2\u6237\u7c7b\u578b",
+        "inquiryValue": "\u8be2\u76d8\u4ef7\u503c",
+        "salesStage": "\u9500\u552e\u9636\u6bb5",
         "demandStage": "\u9700\u6c42\u9636\u6bb5",
         "nextAction": "\u4e0b\u4e00\u6b65\u52a8\u4f5c",
-        "sourceChannel": "\u6765\u6e90\u6e20\u9053",
         "aiReplySuggestion": "AI \u56de\u590d\u5efa\u8bae",
         "knowledgeBaseEvidence": "\u77e5\u8bc6\u5e93\u4f9d\u636e",
         "replyApprovalStatus": "\u56de\u590d\u786e\u8ba4\u72b6\u6001",
@@ -12,14 +16,36 @@
         "aiProcessedAt": "AI\u5904\u7406\u65f6\u95f4"
     },
     "options": {
+        "sourceChannel": {
+            "Email": "\u7535\u5b50\u90ae\u4ef6",
+            "Form": "\u8868\u5355",
+            "WhatsApp": "WhatsApp",
+            "Customer Service": "\u5ba2\u670d",
+            "Other": "\u5176\u4ed6"
+        },
         "customerType": {
             "New Inquiry": "\u65b0\u8be2\u76d8",
-            "Potential Buyer": "\u6f5c\u5728\u91c7\u8d2d\u5ba2\u6237",
+            "Potential Customer": "\u6f5c\u5728\u5ba2\u6237",
             "Existing Customer": "\u73b0\u6709\u5ba2\u6237",
-            "Partner": "\u6e20\u9053\u4f19\u4f34",
+            "Partner": "\u5408\u4f5c\u4f19\u4f34",
             "After-Sales": "\u552e\u540e\u5ba2\u6237",
             "Supplier": "\u4f9b\u5e94\u5546",
             "Other": "\u5176\u4ed6"
+        },
+        "inquiryValue": {
+            "High": "\u9ad8",
+            "Medium": "\u4e2d",
+            "Low": "\u4f4e",
+            "None": "\u65e0"
+        },
+        "salesStage": {
+            "L0 Lost": "L0-\u6d41\u5931",
+            "L1 New Inquiry": "L1-\u65b0\u8be2\u76d8",
+            "L2 Contacted": "L2-\u5df2\u8054\u7cfb",
+            "L3 Requirement Confirmed": "L3-\u9700\u6c42\u786e\u8ba4",
+            "L4 Proposal Quotation": "L4-\u65b9\u6848\u62a5\u4ef7",
+            "L5 Won": "L5-\u7b7e\u5355",
+            "L6 No Reply": "L6-\u5ba2\u6237\u672a\u56de\u590d"
         },
         "demandStage": {
             "Initial Contact": "\u521d\u6b21\u63a5\u89e6",
@@ -40,14 +66,6 @@
             "Follow Up": "\u7ee7\u7eed\u8ddf\u8fdb",
             "Escalate Service": "\u5347\u7ea7\u5ba2\u670d\u5904\u7406",
             "No Action": "\u6682\u65e0\u52a8\u4f5c"
-        },
-        "sourceChannel": {
-            "Email": "\u7535\u5b50\u90ae\u4ef6",
-            "Website Inquiry": "\u7f51\u7ad9\u8be2\u76d8",
-            "Customer Service Message": "\u5ba2\u670d\u6d88\u606f",
-            "Phone": "\u7535\u8bdd",
-            "Manual Entry": "\u624b\u52a8\u5f55\u5165",
-            "Other": "\u5176\u4ed6"
         },
         "replyApprovalStatus": {
             "Draft": "\u8349\u7a3f",

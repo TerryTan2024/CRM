@@ -1,10 +1,52 @@
 {
     "fields": {
-        "customerType": {
+        "inquiryDate": {
+            "type": "date",
+            "audited": true
+        },
+        "sourceCountry": {
+            "type": "varchar",
+            "maxLength": 100,
+            "audited": true
+        },
+        "sourceChannel": {
             "type": "enum",
-            "options": ["", "New Inquiry", "Potential Buyer", "Existing Customer", "Partner", "After-Sales", "Supplier", "Other"],
+            "options": ["", "Email", "Form", "WhatsApp", "Customer Service", "Other"],
             "audited": true,
             "displayAsLabel": true
+        },
+        "customerType": {
+            "type": "enum",
+            "options": ["", "New Inquiry", "Potential Customer", "Existing Customer", "Partner", "After-Sales", "Supplier", "Other"],
+            "audited": true,
+            "displayAsLabel": true
+        },
+        "inquiryValue": {
+            "type": "enum",
+            "options": ["", "High", "Medium", "Low", "None"],
+            "audited": true,
+            "displayAsLabel": true,
+            "style": {
+                "High": "success",
+                "Medium": "warning",
+                "Low": "info",
+                "None": "default"
+            }
+        },
+        "salesStage": {
+            "type": "enum",
+            "options": ["", "L0 Lost", "L1 New Inquiry", "L2 Contacted", "L3 Requirement Confirmed", "L4 Proposal Quotation", "L5 Won", "L6 No Reply"],
+            "audited": true,
+            "displayAsLabel": true,
+            "style": {
+                "L0 Lost": "danger",
+                "L1 New Inquiry": "info",
+                "L2 Contacted": "primary",
+                "L3 Requirement Confirmed": "primary",
+                "L4 Proposal Quotation": "warning",
+                "L5 Won": "success",
+                "L6 No Reply": "default"
+            }
         },
         "demandStage": {
             "type": "enum",
@@ -15,12 +57,6 @@
         "nextAction": {
             "type": "enum",
             "options": ["", "Confirm Requirement", "Send Product Info", "Prepare Quotation", "Schedule Meeting", "Assign Specialist", "Follow Up", "Escalate Service", "No Action"],
-            "audited": true,
-            "displayAsLabel": true
-        },
-        "sourceChannel": {
-            "type": "enum",
-            "options": ["", "Email", "Website Inquiry", "Customer Service Message", "Phone", "Manual Entry", "Other"],
             "audited": true,
             "displayAsLabel": true
         },

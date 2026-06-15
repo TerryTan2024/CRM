@@ -1,12 +1,18 @@
 [
     {
-        "label": "\u667a\u80fd\u5904\u7406",
+        "label": "\u8be2\u76d8\u5206\u7c7b",
         "rows": [
-            [{"name": "customerType"}, {"name": "demandStage"}],
-            [{"name": "sourceChannel"}, {"name": "nextAction"}],
+            [{"name": "inquiryDate"}, {"name": "sourceCountry"}],
+            [{"name": "sourceChannel"}, {"name": "customerType"}],
+            [{"name": "inquiryValue"}, {"name": "salesStage"}],
             [{"name": "replyApprovalStatus"}, {"name": "assignedUser"}],
             [{"name": "sourceEmailFrom"}, {"name": "aiProcessedAt"}],
-            [{"name": "sourceEmailId"}, false],
+            [{"name": "sourceEmailId"}, false]
+        ]
+    },
+    {
+        "label": "\u56de\u590d\u5efa\u8bae",
+        "rows": [
             [{"name": "aiReplySuggestion", "fullWidth": true}],
             [{"name": "knowledgeBaseEvidence", "fullWidth": true}]
         ]
