@@ -336,26 +336,37 @@ body .container.content {
 
 [data-role="password-input-container"] {
     position: relative;
-    display: block;
+    display: flex;
+    align-items: center;
 }
 
 [data-role="password-input-container"] input {
-    padding-right: 44px !important;
+    width: 100%;
+    padding-right: 56px !important;
 }
 
 [data-action="toggleShowPassword"] {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    color: #94a3b8;
+    position: absolute !important;
+    top: 0 !important;
+    right: 12px !important;
+    bottom: 0 !important;
+    z-index: 2;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 32px !important;
+    height: 100% !important;
+    margin: auto 0 !important;
+    color: #94a3b8 !important;
+    line-height: 1 !important;
+    text-decoration: none !important;
+    transform: none !important;
+}
+
+[data-action="toggleShowPassword"] span {
+    display: block;
+    font-size: 18px;
     line-height: 1;
-    text-decoration: none;
-    transform: translateY(-50%);
 }
 
 [data-name="submit"] {
