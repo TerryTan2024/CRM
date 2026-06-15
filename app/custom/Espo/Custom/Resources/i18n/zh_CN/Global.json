@@ -10,7 +10,7 @@
         "Email": "电子邮件",
         "Task": "跟进任务",
         "Call": "电话记录",
-        "Meeting": "会议记录",
+        "Meeting": "会议",
         "Document": "资料文件"
     },
     "scopeNamesPlural": {
@@ -24,7 +24,7 @@
         "Email": "电子邮件",
         "Task": "跟进任务",
         "Call": "电话记录",
-        "Meeting": "会议记录",
+        "Meeting": "会议",
         "Document": "资料文件"
     },
     "links": {
