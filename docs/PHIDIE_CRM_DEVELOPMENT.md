@@ -1,43 +1,327 @@
-# PHIDIE CRM Development Baseline
+# 飞迭智能客户管理产品化路线图
 
-## Product Direction
+本文档用于把当前 EspoCRM 二次开发项目推进为可持续交付的「飞迭智能客户管理」产品。目标不是只改登录页或菜单名称，而是形成一套可以给不同客户部署、配置、升级和持续二次开发的产品基线。
 
-PHIDIE CRM is being developed as an intelligent customer-management system:
+参考产品页：https://phidie.cn/intelligent-customer-management/
 
-- Customer emails, website inquiries and customer-service messages enter one CRM workspace.
-- The system identifies customer type, demand stage and next action.
-- Enterprise knowledge-base content is used to generate reply suggestions.
-- Suggested replies must remain reviewable and confirmable before they are sent.
+## 1. 产品定位
 
-## Current Implementation Layer
+飞迭智能客户管理面向需要处理大量客户邮件、官网询盘、客服消息、售后邮件和销售跟进的团队。
 
-This repository keeps the EspoCRM core intact and puts PHIDIE-specific work in the custom layer:
+核心价值：
 
-- `app/client/custom/` for login and visual brand.
-- `app/custom/Espo/Custom/Resources/metadata/` for custom fields and enabled scopes.
-- `app/custom/Espo/Custom/Resources/layouts/` for product-specific record layouts.
-- `app/custom/Espo/Custom/Resources/i18n/` for PHIDIE naming and Chinese labels.
+- 邮件、询盘、客服消息自动归集，进入统一客户工作台。
+- AI 识别客户类型、需求阶段、产品意向和下一步动作。
+- 调取企业知识库，生成可确认的回复建议。
+- 所有自动回复必须先成为建议，由人员确认后再发送。
+- 客户、联系人、商机、工单、邮件、知识库和任务围绕同一份客户数据协作。
 
-This makes it safer to upgrade or re-pull EspoCRM later, because the product customizations are not mixed directly into the upstream application code.
+产品口径：
 
-## First Custom Fields
+- 对外产品名：飞迭智能客户管理。
+- 系统内品牌：飞迭智客 / 飞迭智能客户管理。
+- 底层技术：基于 EspoCRM 开源系统二次开发。
 
-The first product data model adds these fields to customer leads and customer messages:
+## 2. 合规边界
 
-- `customerType`
-- `demandStage`
-- `nextAction`
-- `sourceChannel`
-- `aiReplySuggestion`
-- `knowledgeBaseEvidence`
-- `replyApprovalStatus`
+EspoCRM 源码包含 AGPL 许可和附加声明，代码文件中明确要求修改版本的交互界面保留包含 `EspoCRM` 字样的适当法律声明。
 
-These fields are the placeholder contract for the next backend automation step.
+因此产品化策略应区分两层：
 
-## Next Backend Steps
+- 业务使用界面可以飞迭化：登录页、导航、菜单、标题、工作台、客户文案、默认配置、客户部署包。
+- 法律和开源声明不能粗暴删除：应保留在「关于 / 开源许可 / 系统信息」等低干扰位置，避免违法去品牌。
 
-1. Add ingestion endpoints or scheduled jobs for website inquiries, mailbox intake and customer-service messages.
-2. Normalize incoming messages into Lead or Case records.
-3. Add classification service for customer type, demand stage and next action.
-4. Add knowledge-base retrieval and reply suggestion generation.
-5. Require human confirmation before sending generated replies.
+执行原则：
+
+- 不再把 EspoCRM 作为业务品牌露出。
+- 不从源码头部、许可证文件、必要法律声明中删除 EspoCRM。
+- 新增飞迭品牌说明和开源许可说明，让客户知道这是飞迭产品化发行版。
+
+## 3. 当前代码基线
+
+仓库结构：
+
+- `app/`：EspoCRM 应用文件快照。
+- `app/custom/Espo/Custom/`：飞迭定制层，优先在这里开发。
+- `app/client/custom/`：前端自定义 CSS 和登录页样式。
+- `deploy/`：Docker Compose 部署基线。
+- `database/`：数据库迁移快照。
+- `site/`：线上站点入口目录快照。
+
+已完成的飞迭化基础：
+
+- 登录页已改为飞迭视觉方向。
+- 后台左侧导航已替换 EspoCRM Logo 为飞迭智客。
+- 已通过 `app/custom/Espo/Custom/Resources/metadata/app/client.json` 正式加载自定义 CSS。
+- Lead 和 Case 已增加智能客户管理所需字段：
+  - `customerType`
+  - `demandStage`
+  - `nextAction`
+  - `sourceChannel`
+  - `aiReplySuggestion`
+  - `knowledgeBaseEvidence`
+  - `replyApprovalStatus`
+- 已有初始中文菜单和布局定制。
+
+当前风险：
+
+- 仍有部分中文 i18n 文件存在编码显示异常，需要修复并统一 UTF-8。
+- 部分 UI 改动直接覆盖 EspoCRM 原模板和 `client/lib/templates.tpl`，后续升级会有冲突风险。
+- 当前自动归集、AI 分类、知识库检索、确认发送还只是字段和页面占位，尚未形成完整业务闭环。
+- 部署流程已有 Docker 基线，但还没有客户一键部署、升级、备份和初始化脚本。
+
+## 4. 产品化阶段
+
+### 阶段 0：代码与合规基线治理
+
+目标：让项目可维护、可升级、可交付。
+
+任务：
+
+- 建立二次开发边界：优先使用 `custom/Espo/Custom`、metadata、layouts、i18n、client custom CSS。
+- 梳理所有直接改动过的 EspoCRM 核心文件，标记为：
+  - 必须保留的产品改动
+  - 可迁移到 custom 层的改动
+  - 应回退的临时改动
+- 修复中文语言包编码，统一为 UTF-8。
+- 建立开源许可说明页：飞迭品牌 + EspoCRM 开源声明。
+- 建立部署检查清单：缓存清理、rebuild、权限、数据库连接、站点 URL、邮件配置。
+
+验收：
+
+- 新服务器可按 README 部署成功。
+- 登录页和后台基础品牌一致。
+- 法律声明合规保留，不干扰业务界面。
+- `git status` 干净，服务器、仓库、部署文档一致。
+
+### 阶段 1：飞迭品牌与后台体验统一
+
+目标：让用户进入系统后感受到这是飞迭产品，而不是 EspoCRM 换皮。
+
+任务：
+
+- 完成登录页、导航、favicon、标题、邮件发件名、页脚、系统名飞迭化。
+- 统一后台配色、字体、按钮、表格、列表、dashlet、kanban、邮件模块视觉规则。
+- 建立「飞迭视觉变量」：主色、辅助色、背景、边框、状态色。
+- 保留原有功能密度，不做过度营销式页面。
+- 设计一个可替换客户 Logo 的位置，支持客户部署时配置客户名称和 Logo。
+
+验收：
+
+- 常用页面视觉一致：首页、客户公司、联系人、客户线索、销售机会、客户邮件、客户消息、知识库。
+- 登录页、后台、浏览器标题、favicon 一致。
+- 不破坏 EspoCRM 原有操作效率和响应式布局。
+
+### 阶段 2：统一客户消息入口
+
+目标：邮件、官网询盘、客服消息进入同一个客户管理系统。
+
+任务：
+
+- 邮件入口：
+  - 配置群组邮箱 / IMAP 入站。
+  - 邮件自动关联 Account、Contact、Lead、Case。
+  - 未识别客户自动创建 Lead 或 Case。
+- 网站询盘入口：
+  - 新增公开 API 或 webhook 接收官网表单。
+  - 入库字段：姓名、邮箱、电话、公司、国家、产品、需求、来源 URL、UTM、原文。
+  - 自动去重和合并已有客户。
+- 客服消息入口：
+  - 预留客服系统 webhook。
+  - 标准化为统一 `CustomerMessage` 或 Case 记录。
+- 建立消息归集日志，记录来源、处理状态、关联结果和失败原因。
+
+验收：
+
+- 任一入口进入的消息都能看到来源、客户、联系人、阶段和负责人。
+- 重复客户不会重复创建大量脏数据。
+- 失败消息可以在后台重新处理。
+
+### 阶段 3：客户识别与自动分层
+
+目标：系统自动判断客户是谁、处于什么阶段、下一步该做什么。
+
+任务：
+
+- 规则分类第一版：
+  - 来源渠道：邮件、官网询盘、客服消息、电话、手动录入。
+  - 客户类型：新询盘、潜在买家、老客户、合作伙伴、售后、供应商、其他。
+  - 需求阶段：初次接触、需求确认、方案匹配、报价、谈判、成交、丢失、暂停。
+  - 下一步动作：确认需求、发送资料、准备报价、安排会议、分配专家、跟进、升级售后。
+- AI 分类第二版：
+  - 基于消息原文、历史沟通、客户资料和产品词识别分类。
+  - 输出结构化 JSON，写入 Lead/Case 字段。
+  - 记录 AI 置信度、理由和原始输入摘要。
+- 人工修正闭环：
+  - 用户修改分类后记录反馈。
+  - 后续用于优化提示词和规则。
+
+验收：
+
+- 新消息入库后自动出现客户类型、需求阶段、下一步动作。
+- 分类结果可人工覆盖。
+- 有审计记录，能追踪 AI 为什么这么判断。
+
+### 阶段 4：企业知识库与可确认回复建议
+
+目标：把知识库从文章库变成回复依据。
+
+任务：
+
+- 建立知识库结构：
+  - 产品参数
+  - MOQ
+  - 认证文件
+  - 定制包装
+  - 交付周期
+  - 报价规则
+  - 售后政策
+  - 常见问题
+- 知识库检索：
+  - 先做关键词/标签匹配。
+  - 再升级为向量检索或混合检索。
+- 回复建议：
+  - 从客户消息中提取问题点。
+  - 检索知识库证据。
+  - 生成中英文回复草稿。
+  - 附带引用依据，避免凭空编造。
+- 确认发送：
+  - 状态流：Draft -> Needs Review -> Approved -> Sent / Rejected。
+  - 禁止 AI 自动直接发送给客户。
+  - 用户确认后再创建 Email 回复或工单回复。
+
+验收：
+
+- 客户消息详情页能看到知识库命中和回复草稿。
+- 回复草稿能编辑、审批、发送。
+- 每条 AI 回复都有可追溯依据。
+
+### 阶段 5：飞迭客户跟进工作台
+
+目标：从传统 CRM 列表变成以客户运营为中心的工作台。
+
+任务：
+
+- 首页 dashboard 重做为：
+  - 今日待处理消息
+  - 新询盘
+  - 高意向客户
+  - 待确认回复
+  - 待报价客户
+  - 逾期跟进
+  - 知识库缺口
+- 列表视图：
+  - 按来源、国家、客户类型、阶段、负责人筛选。
+  - 重点展示 AI 建议、下一步动作、最后沟通时间。
+- 详情页：
+  - 客户资料、历史邮件、任务、商机、工单、知识库建议在同一页可读。
+- 管理视图：
+  - 响应时间、处理数量、转化阶段、成交/丢失原因。
+
+验收：
+
+- 销售/客服每天登录后知道先处理什么。
+- 管理者能看到消息进入、分派、回复、跟进、成交的完整链路。
+
+### 阶段 6：客户部署包与配置中心
+
+目标：后续给客户部署时，不需要重新手工改代码。
+
+任务：
+
+- 建立客户配置文件：
+  - 客户公司名
+  - 客户 Logo
+  - 默认语言
+  - 站点 URL
+  - 邮箱入口
+  - 官网 webhook token
+  - AI provider 和模型
+  - 知识库初始目录
+- 部署脚本：
+  - 初始化 Docker 服务。
+  - 恢复数据库或创建空库。
+  - 写入品牌配置。
+  - 执行 rebuild。
+  - 创建管理员账号。
+- 备份恢复：
+  - 数据库备份
+  - app volume 备份
+  - 知识库附件备份
+- 升级策略：
+  - 飞迭 custom 层和 EspoCRM core 分离。
+  - 每次升级先在 staging 验证。
+
+验收：
+
+- 新客户可在一台新服务器上按文档完成部署。
+- 品牌、邮箱、AI 和知识库可配置，不需要硬编码。
+- 升级不覆盖客户数据。
+
+### 阶段 7：商业化产品成熟
+
+目标：成为可销售、可演示、可持续维护的飞迭产品。
+
+任务：
+
+- 演示数据包：
+  - 官网询盘
+  - 海外客户邮件
+  - 售后工单
+  - 知识库命中
+  - AI 回复草稿
+- 权限模板：
+  - 管理员
+  - 销售
+  - 客服
+  - 主管
+  - 只读管理层
+- 产品文档：
+  - 用户手册
+  - 管理员部署手册
+  - 知识库维护手册
+  - AI 回复审核规范
+- 运维监控：
+  - 邮件拉取失败
+  - webhook 失败
+  - AI 调用失败
+  - 队列积压
+  - 磁盘和数据库备份状态
+
+验收：
+
+- 能稳定演示完整流程：询盘进入 -> 自动识别 -> 知识库命中 -> 回复建议 -> 人工确认 -> 跟进任务。
+- 能部署给第二个客户，不依赖一次性手工操作。
+
+## 5. 推荐开发顺序
+
+短期先做：
+
+1. 修复中文语言包编码和品牌文本。
+2. 梳理并减少对 EspoCRM core 模板的直接修改。
+3. 建立客户部署配置和初始化脚本。
+4. 完成网站询盘 webhook 入库。
+5. 完成邮件自动关联和 Lead/Case 创建。
+
+中期再做：
+
+1. 规则分类引擎。
+2. AI 分类服务。
+3. 知识库检索。
+4. 回复建议与确认发送。
+5. 飞迭客户跟进工作台。
+
+后期产品化：
+
+1. 多客户品牌配置。
+2. 演示数据和销售演示环境。
+3. 升级、备份、监控体系。
+4. 文档和权限模板。
+
+## 6. 开发纪律
+
+- 不为了去品牌而破坏 EspoCRM 许可声明。
+- 不把 AI 回复直接发送给客户，必须可确认。
+- 不把所有改动写进 core，优先 custom 层。
+- 每次服务器改动先备份，再部署，再同步回本地，再提交 GitHub。
+- 每个阶段完成后都要能重新部署到新服务器验证。
