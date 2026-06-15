@@ -140,10 +140,8 @@ body:not(.login-page) .kanban,
 body:not(.login-page) .kanban-board,
 body:not(.login-page) .kanban-container,
 body:not(.login-page) .dashlet,
-body:not(.login-page) .email-folder-list,
-body:not(.login-page) .middle,
-body:not(.login-page) .bottom {
-    background: transparent !important;
+body:not(.login-page) .email-folder-list {
+    background: #ffffff !important;
     border-color: transparent !important;
     box-shadow: none !important;
 }
@@ -157,7 +155,7 @@ body:not(.login-page) .table > tbody > tr > td,
 body:not(.login-page) .table > tbody > tr > th,
 body:not(.login-page) .table > tfoot > tr > td,
 body:not(.login-page) .table > tfoot > tr > th {
-    background: transparent !important;
+    background: #ffffff !important;
     border-color: transparent !important;
     box-shadow: none !important;
 }
@@ -165,7 +163,7 @@ body:not(.login-page) .table > tfoot > tr > th {
 body:not(.login-page) .list-row:hover,
 body:not(.login-page) .table-hover > tbody > tr:hover > td,
 body:not(.login-page) .table-hover > tbody > tr:hover > th {
-    background: rgba(255, 255, 255, 0.28) !important;
+    background: #f8fafc !important;
 }
 
 .field[data-name="aiReplySuggestion"] textarea,
