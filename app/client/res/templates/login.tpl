@@ -190,7 +190,7 @@ body .container.content {
     border-radius: 0 !important;
     background: transparent !important;
     box-shadow: none !important;
-    transform: translateY(-300px);
+    transform: translateY(-150px);
 }
 
 #login .panel-heading {
@@ -352,7 +352,7 @@ body .container.content {
 
     #login.panel {
         max-width: 360px !important;
-        transform: translateY(-180px);
+        transform: translateY(-30px);
     }
 
     #login .panel-body {
