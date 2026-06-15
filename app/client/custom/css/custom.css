@@ -146,7 +146,6 @@ body:not(.login-page) .email-folder-list {
     box-shadow: none !important;
 }
 
-body:not(.login-page) .page-header,
 body:not(.login-page) .list-row,
 body:not(.login-page) .list-row > .cell,
 body:not(.login-page) .table,
