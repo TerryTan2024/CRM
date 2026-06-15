@@ -109,7 +109,7 @@ body .container.content {
 
 .pd-split {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(420px, 1fr);
+    grid-template-columns: minmax(0, 60fr) minmax(420px, 40fr);
     width: 100vw;
     height: 100vh;
     overflow: hidden;
@@ -232,20 +232,23 @@ body .container.content {
 }
 
 .pd-right {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     grid-column: 2;
     grid-row: 1;
     min-width: 0;
+    min-height: 100vh;
     padding: 48px 64px;
     background: #fff;
 }
 
 .container-centering {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+    position: absolute !important;
+    inset: 0 !important;
+    display: grid !important;
+    place-items: center !important;
     width: 100% !important;
     height: 100% !important;
     margin: 0 !important;
@@ -260,6 +263,7 @@ body .container.content {
     border-radius: 0 !important;
     background: transparent !important;
     box-shadow: none !important;
+    transform: translateY(-4vh);
 }
 
 #login .panel-heading {
@@ -400,7 +404,7 @@ body .container.content {
 
 @media (max-width: 980px) and (min-width: 521px) {
     .pd-split {
-        grid-template-columns: minmax(0, 1fr) minmax(340px, 1fr);
+        grid-template-columns: minmax(0, 60fr) minmax(340px, 40fr);
     }
 
     .pd-left {
@@ -421,6 +425,7 @@ body .container.content {
 
     #login.panel {
         max-width: 360px !important;
+        transform: translateY(-2vh);
     }
 
     #login .panel-body {
@@ -472,6 +477,10 @@ body .container.content {
 
     #login .panel-body {
         padding: 30px 24px !important;
+    }
+
+    #login.panel {
+        transform: none;
     }
 }
 </style>
