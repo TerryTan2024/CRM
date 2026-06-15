@@ -63,7 +63,7 @@ body:not(.login-page) footer .credit a[href*="espocrm"] {
 }
 
 .phidie-company-logo {
-    display: inline-flex;
+    display: none;
     align-items: center;
     height: 26px;
     padding: 0 10px;
@@ -75,6 +75,16 @@ body:not(.login-page) footer .credit a[href*="espocrm"] {
     background: rgba(255, 255, 255, 0.72);
 }
 
+body:not(.login-page) {
+    --navbar-inverse-bg: transparent;
+    --navbar-inverse-link-active-bg: rgba(255, 255, 255, 0.58);
+    --navbar-inverse-link-hover-bg: rgba(255, 255, 255, 0.5);
+    --navbar-inverse-border: rgba(203, 213, 225, 0.72);
+}
+
+body:not(.login-page) #navbar,
+body:not(.login-page) #navbar .navbar,
+body:not(.login-page) #navbar .navbar-inverse,
 body:not(.login-page) .navbar.navbar-inverse {
     background:
         radial-gradient(circle at 22% 18%, rgba(255, 255, 255, 0.86), transparent 26%),
@@ -85,6 +95,7 @@ body:not(.login-page) .navbar.navbar-inverse {
     box-shadow: inset -1px 0 0 rgba(148, 163, 184, 0.22), 12px 0 36px rgba(15, 23, 42, 0.04);
 }
 
+body:not(.login-page) #navbar .navbar-inverse::before,
 body:not(.login-page) .navbar.navbar-inverse::before {
     content: "";
     position: absolute;
@@ -101,6 +112,9 @@ body:not(.login-page) .navbar.navbar-inverse::before {
     opacity: 0.62;
 }
 
+body:not(.login-page) #navbar .navbar-header,
+body:not(.login-page) #navbar .navbar-collapse,
+body:not(.login-page) #navbar .navbar-body,
 body:not(.login-page) .navbar.navbar-inverse .navbar-header,
 body:not(.login-page) .navbar.navbar-inverse .navbar-collapse,
 body:not(.login-page) .navbar.navbar-inverse .navbar-body {
@@ -109,11 +123,16 @@ body:not(.login-page) .navbar.navbar-inverse .navbar-body {
     background: transparent !important;
 }
 
+body:not(.login-page) #navbar .nav > li > a,
+body:not(.login-page) #navbar .nav > li > div,
 body:not(.login-page) .navbar.navbar-inverse .nav > li > a,
 body:not(.login-page) .navbar.navbar-inverse .nav > li > div {
     color: #334155 !important;
 }
 
+body:not(.login-page) #navbar .nav > li.active > a,
+body:not(.login-page) #navbar .nav > li > a:hover,
+body:not(.login-page) #navbar .nav > li.open > a,
 body:not(.login-page) .navbar.navbar-inverse .nav > li.active > a,
 body:not(.login-page) .navbar.navbar-inverse .nav > li > a:hover,
 body:not(.login-page) .navbar.navbar-inverse .nav > li.open > a {
@@ -121,6 +140,8 @@ body:not(.login-page) .navbar.navbar-inverse .nav > li.open > a {
     color: #0f172a !important;
 }
 
+body:not(.login-page) #navbar .nav .short-label,
+body:not(.login-page) #navbar .nav .full-label,
 body:not(.login-page) .navbar.navbar-inverse .nav .short-label,
 body:not(.login-page) .navbar.navbar-inverse .nav .full-label {
     color: inherit !important;
