@@ -10,6 +10,7 @@ body {
 
 body.login-page {
     margin: 0;
+    overflow: hidden;
     background: #eef2f6;
     color: #101828;
     font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
@@ -25,7 +26,8 @@ body.login-page .container.content {
 
 body.login-page .container-centering {
     display: grid;
-    grid-template-columns: minmax(480px, 0.92fr) minmax(420px, 0.58fr);
+    grid-template-columns: minmax(0, 58fr) minmax(320px, 42fr);
+    height: 100vh;
     min-height: 100vh;
     margin: 0 !important;
     padding: 0 !important;
@@ -155,6 +157,7 @@ body.login-page .container-centering {
     justify-content: center;
     padding: 56px 48px;
     background: #fbfcfe;
+    min-width: 0;
 }
 
 .login-card {
@@ -271,9 +274,87 @@ body.login-page .container-centering {
     color: #344054;
 }
 
-@media (max-width: 980px) {
+@media (max-width: 980px) and (min-width: 681px) {
+    body.login-page .container-centering {
+        grid-template-columns: minmax(0, 56fr) minmax(300px, 44fr);
+    }
+
+    .brand-panel {
+        padding: 34px 28px;
+    }
+
+    .brand-logo {
+        margin-bottom: 34px;
+        font-size: 16px;
+    }
+
+    .brand-logo-mark {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+    }
+
+    .brand-title {
+        font-size: 30px;
+        line-height: 1.24;
+    }
+
+    .brand-summary {
+        margin: 16px 0 24px;
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+    .brand-kicker {
+        margin-bottom: 12px;
+        font-size: 11px;
+    }
+
+    .capability-list {
+        gap: 10px;
+    }
+
+    .capability-item {
+        padding: 11px 12px;
+        font-size: 12px;
+        line-height: 1.5;
+    }
+
+    .login-panel {
+        padding: 32px 22px;
+    }
+
+    .login-card {
+        max-width: 300px;
+    }
+
+    .login-header {
+        margin-bottom: 24px;
+    }
+
+    .login-header h1 {
+        font-size: 25px;
+    }
+
+    .login-header p {
+        font-size: 13px;
+    }
+
+    .login-note {
+        margin-top: 20px;
+        padding-top: 18px;
+    }
+}
+
+@media (max-width: 680px) {
+    body.login-page {
+        overflow: auto;
+    }
+
     body.login-page .container-centering {
         grid-template-columns: 1fr;
+        height: auto;
+        min-height: 100vh;
     }
 
     .brand-panel {
