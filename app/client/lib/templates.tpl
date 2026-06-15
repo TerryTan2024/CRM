@@ -190,14 +190,6 @@ body .container.content {
     font-weight: 820;
 }
 
-.pd-kicker {
-    margin-bottom: 16px;
-    color: #1d4ed8;
-    font-size: 12px;
-    font-weight: 760;
-    letter-spacing: 0.18em;
-}
-
 .pd-title {
     max-width: 520px;
     margin: 0;
@@ -498,7 +490,6 @@ body .container.content {
             </div>
 
             <div>
-                <div class="pd-kicker">CUSTOMER OPERATIONS</div>
                 <h1 class="pd-title">智能客户管理</h1>
                 <p class="pd-summary">统一消息入口，清晰推进每一次跟进。</p>
             </div>
