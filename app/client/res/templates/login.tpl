@@ -274,7 +274,7 @@ body.login-page .container-centering {
     color: #344054;
 }
 
-@media (max-width: 980px) and (min-width: 681px) {
+@media (max-width: 980px) and (min-width: 521px) {
     body.login-page .container-centering {
         grid-template-columns: minmax(0, 56fr) minmax(300px, 44fr);
     }
@@ -346,7 +346,7 @@ body.login-page .container-centering {
     }
 }
 
-@media (max-width: 680px) {
+@media (max-width: 520px) {
     body.login-page {
         overflow: auto;
     }
