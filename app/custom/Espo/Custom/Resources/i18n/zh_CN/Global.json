@@ -2,7 +2,7 @@
     "scopeNames": {
         "Account": "客户",
         "Contact": "联系人",
-        "Lead": "客户线索",
+        "Lead": "潜在客户",
         "Opportunity": "销售机会",
         "Case": "客户消息",
         "KnowledgeBaseArticle": "知识库文章",
@@ -16,7 +16,7 @@
     "scopeNamesPlural": {
         "Account": "客户",
         "Contact": "联系人",
-        "Lead": "客户线索",
+        "Lead": "潜在客户",
         "Opportunity": "销售机会",
         "Case": "客户消息",
         "KnowledgeBaseArticle": "知识库",
@@ -32,7 +32,7 @@
         "account": "客户",
         "contacts": "联系人",
         "contact": "联系人",
-        "leads": "客户线索",
+        "leads": "潜在客户",
         "opportunities": "销售机会",
         "cases": "客户消息",
         "emails": "客户邮件",
@@ -40,14 +40,14 @@
         "articles": "知识库文章"
     },
     "dashlets": {
-        "Leads": "我的客户线索",
+        "Leads": "我的潜在客户",
         "Cases": "待处理客户消息",
         "Tasks": "我的跟进任务",
         "Opportunities": "销售机会",
         "Activities": "近期协作"
     },
     "labels": {
-        "Create Lead": "创建客户线索",
+        "Create Lead": "创建潜在客户",
         "Create Case": "创建客户消息",
         "Create Task": "创建跟进任务",
         "Compose Email": "撰写客户邮件",
