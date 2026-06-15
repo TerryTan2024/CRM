@@ -483,7 +483,7 @@ body .container.content {
 
             <div>
                 <h1 class="pd-title">智能客户管理</h1>
-                <p class="pd-summary">统一消息入口，清晰推进每一次跟进。</p>
+                <p class="pd-summary">邮件、询盘、客服消息，自动归集<br>AI识别客户类型，自动分层<br>调取企业知识库，生成可确认的回复</p>
             </div>
 
             <div class="pd-tags" aria-hidden="true">
