@@ -408,8 +408,8 @@ body .container.content {
 }
 
 
-.alert,
-.message {
+#login .alert,
+#login .message {
     margin-bottom: 18px !important;
     padding: 12px 14px !important;
     border: 1px solid #fecaca !important;
