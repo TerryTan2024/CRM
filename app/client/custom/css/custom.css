@@ -76,13 +76,13 @@ body:not(.login-page) footer .credit a[href*="espocrm"] {
 }
 
 body:not(.login-page) {
-    --body-bg: #f7fbff;
+    --body-bg: #eef6ff;
     --navbar-inverse-bg: transparent;
     --navbar-inverse-link-active-bg: rgba(255, 255, 255, 0.58);
     --navbar-inverse-link-hover-bg: rgba(255, 255, 255, 0.5);
     --navbar-inverse-border: rgba(203, 213, 225, 0.72);
     background:
-        linear-gradient(180deg, #ffffff 0%, #f7fbff 46%, #eef6ff 100%) !important;
+        linear-gradient(180deg, #f3f8ff 0%, #eaf4ff 48%, #dfeeff 100%) !important;
 }
 
 body:not(.login-page) #navbar,
@@ -138,7 +138,7 @@ body:not(.login-page) .list-container,
 body:not(.login-page) .record,
 body:not(.login-page) .page-content {
     background:
-        linear-gradient(180deg, #ffffff 0%, #f8fbff 44%, #eef6ff 100%) !important;
+        linear-gradient(180deg, #f3f8ff 0%, #eaf4ff 48%, #dfeeff 100%) !important;
 }
 
 .field[data-name="aiReplySuggestion"] textarea,
