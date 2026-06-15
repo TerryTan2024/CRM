@@ -109,7 +109,7 @@ body .container.content {
 
 .pd-split {
     display: grid;
-    grid-template-columns: minmax(0, 40fr) minmax(420px, 60fr);
+    grid-template-columns: minmax(420px, 44fr) minmax(0, 56fr);
     width: 100vw;
     height: 100vh;
     overflow: hidden;
@@ -120,11 +120,17 @@ body .container.content {
     position: relative;
     display: flex;
     align-items: stretch;
+    grid-column: 2;
+    grid-row: 1;
     min-width: 0;
     overflow: hidden;
     padding: 56px;
-    background: linear-gradient(135deg, #081b33 0%, #123a64 58%, #155d8f 100%);
-    color: #fff;
+    background:
+        radial-gradient(circle at 28% 26%, rgba(255, 255, 255, 0.84), transparent 28%),
+        radial-gradient(circle at 64% 30%, rgba(191, 219, 254, 0.9), transparent 34%),
+        radial-gradient(circle at 74% 72%, rgba(251, 191, 36, 0.26), transparent 34%),
+        linear-gradient(135deg, #dbeafe 0%, #e7eef7 48%, #f4efe7 100%);
+    color: #111827;
 }
 
 .pd-left::before {
@@ -132,22 +138,25 @@ body .container.content {
     position: absolute;
     inset: 0;
     background-image:
-        linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
-    background-size: 48px 48px;
-    opacity: 0.72;
+        radial-gradient(circle at 58% 46%, rgba(255, 255, 255, 0.5), transparent 16%),
+        radial-gradient(circle at 68% 54%, rgba(37, 99, 235, 0.16), transparent 22%);
+    opacity: 1;
 }
 
 .pd-left::after {
     content: "";
     position: absolute;
-    right: -180px;
-    bottom: -180px;
-    width: 460px;
-    height: 460px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    right: 8%;
+    top: 16%;
+    width: 520px;
+    height: 520px;
+    border: 1px solid rgba(37, 99, 235, 0.16);
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(96, 165, 250, 0.18), transparent 66%);
+    background:
+        radial-gradient(circle at 34% 24%, rgba(255, 255, 255, 0.72), transparent 18%),
+        conic-gradient(from 160deg, rgba(255, 255, 255, 0.55), rgba(147, 197, 253, 0.5), rgba(251, 191, 36, 0.24), rgba(255, 255, 255, 0.62));
+    box-shadow: 0 42px 90px rgba(15, 23, 42, 0.16);
+    opacity: 0.72;
 }
 
 .pd-brand-content {
@@ -164,7 +173,7 @@ body .container.content {
     display: inline-flex;
     align-items: center;
     gap: 14px;
-    color: #fff;
+    color: #111827;
     font-size: 18px;
     font-weight: 760;
 }
@@ -175,7 +184,7 @@ body .container.content {
     height: 44px;
     place-items: center;
     border-radius: 10px;
-    background: #fff;
+    background: rgba(255, 255, 255, 0.8);
     color: #1d4ed8;
     font-size: 20px;
     font-weight: 820;
@@ -183,7 +192,7 @@ body .container.content {
 
 .pd-kicker {
     margin-bottom: 16px;
-    color: #bfdbfe;
+    color: #1d4ed8;
     font-size: 12px;
     font-weight: 760;
     letter-spacing: 0.18em;
@@ -192,7 +201,7 @@ body .container.content {
 .pd-title {
     max-width: 520px;
     margin: 0;
-    color: #fff;
+    color: #111827;
     font-size: 48px;
     font-weight: 780;
     line-height: 1.15;
@@ -201,7 +210,7 @@ body .container.content {
 .pd-summary {
     max-width: 380px;
     margin: 22px 0 0;
-    color: rgba(255, 255, 255, 0.76);
+    color: rgba(17, 24, 39, 0.68);
     font-size: 16px;
     line-height: 1.75;
 }
@@ -215,8 +224,8 @@ body .container.content {
 .pd-tag {
     padding: 8px 12px;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.84);
+    background: rgba(255, 255, 255, 0.56);
+    color: rgba(17, 24, 39, 0.72);
     font-size: 12px;
     font-weight: 650;
     text-align: center;
@@ -226,9 +235,11 @@ body .container.content {
     display: flex;
     align-items: center;
     justify-content: center;
+    grid-column: 1;
+    grid-row: 1;
     min-width: 0;
-    padding: 40px 56px;
-    background: #f6f8fb;
+    padding: 48px 64px;
+    background: #fff;
 }
 
 .container-centering {
@@ -245,10 +256,10 @@ body .container.content {
     width: 100% !important;
     max-width: 400px !important;
     margin: 0 !important;
-    border: 1px solid #eef2f7 !important;
-    border-radius: 12px !important;
-    background: #fff !important;
-    box-shadow: 0 20px 60px rgba(15, 23, 42, 0.07) !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
 }
 
 #login .panel-heading {
@@ -389,7 +400,7 @@ body .container.content {
 
 @media (max-width: 980px) and (min-width: 521px) {
     .pd-split {
-        grid-template-columns: minmax(0, 40fr) minmax(340px, 60fr);
+        grid-template-columns: minmax(340px, 46fr) minmax(0, 54fr);
     }
 
     .pd-left {
@@ -405,7 +416,7 @@ body .container.content {
     }
 
     .pd-right {
-        padding: 28px 32px;
+        padding: 34px 36px;
     }
 
     #login.panel {
@@ -436,8 +447,15 @@ body .container.content {
     }
 
     .pd-left {
+        grid-column: 1;
+        grid-row: 2;
         min-height: 300px;
         padding: 34px 24px;
+    }
+
+    .pd-right {
+        grid-column: 1;
+        grid-row: 1;
     }
 
     .pd-title {
