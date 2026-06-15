@@ -36,7 +36,7 @@ body .container.content {
 
 .pd-split {
     display: grid;
-    grid-template-columns: minmax(420px, 44fr) minmax(0, 56fr);
+    grid-template-columns: minmax(0, 1fr) minmax(420px, 1fr);
     width: 100vw;
     height: 100vh;
     overflow: hidden;
@@ -47,7 +47,7 @@ body .container.content {
     position: relative;
     display: flex;
     align-items: stretch;
-    grid-column: 2;
+    grid-column: 1;
     grid-row: 1;
     min-width: 0;
     overflow: hidden;
@@ -162,7 +162,7 @@ body .container.content {
     display: flex;
     align-items: center;
     justify-content: center;
-    grid-column: 1;
+    grid-column: 2;
     grid-row: 1;
     min-width: 0;
     padding: 48px 64px;
@@ -327,7 +327,7 @@ body .container.content {
 
 @media (max-width: 980px) and (min-width: 521px) {
     .pd-split {
-        grid-template-columns: minmax(340px, 46fr) minmax(0, 54fr);
+        grid-template-columns: minmax(0, 1fr) minmax(340px, 1fr);
     }
 
     .pd-left {
@@ -375,14 +375,14 @@ body .container.content {
 
     .pd-left {
         grid-column: 1;
-        grid-row: 2;
+        grid-row: 1;
         min-height: 300px;
         padding: 34px 24px;
     }
 
     .pd-right {
         grid-column: 1;
-        grid-row: 1;
+        grid-row: 2;
     }
 
     .pd-title {
