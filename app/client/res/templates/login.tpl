@@ -50,7 +50,7 @@ body .container.content {
     min-width: 0;
     overflow: hidden;
     padding: 56px;
-    background: linear-gradient(135deg, #08213d 0%, #0f3b66 54%, #145a8a 100%);
+    background: linear-gradient(135deg, #081b33 0%, #123a64 58%, #155d8f 100%);
     color: #fff;
 }
 
@@ -70,11 +70,11 @@ body .container.content {
     position: absolute;
     right: -180px;
     bottom: -180px;
-    width: 520px;
-    height: 520px;
+    width: 460px;
+    height: 460px;
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(96, 165, 250, 0.22), transparent 64%);
+    background: radial-gradient(circle, rgba(96, 165, 250, 0.18), transparent 66%);
 }
 
 .pd-brand-content {
@@ -126,9 +126,9 @@ body .container.content {
 }
 
 .pd-summary {
-    max-width: 440px;
+    max-width: 380px;
     margin: 22px 0 0;
-    color: rgba(255, 255, 255, 0.74);
+    color: rgba(255, 255, 255, 0.76);
     font-size: 16px;
     line-height: 1.75;
 }
@@ -136,17 +136,15 @@ body .container.content {
 .pd-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
 }
 
 .pd-tag {
-    min-width: 84px;
-    padding: 10px 14px;
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.08);
-    color: rgba(255, 255, 255, 0.86);
-    font-size: 13px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.84);
+    font-size: 12px;
     font-weight: 650;
     text-align: center;
 }
@@ -174,10 +172,10 @@ body .container.content {
     width: 100% !important;
     max-width: 400px !important;
     margin: 0 !important;
-    border: 1px solid #e5e7eb !important;
-    border-radius: 10px !important;
+    border: 1px solid #eef2f7 !important;
+    border-radius: 12px !important;
     background: #fff !important;
-    box-shadow: 0 18px 48px rgba(15, 23, 42, 0.08) !important;
+    box-shadow: 0 20px 60px rgba(15, 23, 42, 0.07) !important;
 }
 
 #login .panel-heading {
@@ -231,10 +229,10 @@ body .container.content {
     width: 100%;
     height: 46px !important;
     padding: 0 14px !important;
-    border: 1px solid #cbd5e1 !important;
+    border: 1px solid #d7dee8 !important;
     border-radius: 8px !important;
     outline: none !important;
-    background: #f8fafc !important;
+    background: #fff !important;
     color: #111827 !important;
     box-shadow: none !important;
     font-family: inherit !important;
@@ -301,6 +299,7 @@ body .container.content {
     color: #9ca3af;
     font-size: 12px;
     line-height: 1.6;
+    text-align: center;
 }
 
 .alert,
@@ -397,7 +396,7 @@ body .container.content {
             <div>
                 <div class="pd-kicker">CUSTOMER OPERATIONS</div>
                 <h1 class="pd-title">智能客户管理</h1>
-                <p class="pd-summary">邮件、询盘、客服消息统一归集，跟进清晰可控。</p>
+                <p class="pd-summary">统一消息入口，清晰推进每一次跟进。</p>
             </div>
 
             <div class="pd-tags" aria-hidden="true">
