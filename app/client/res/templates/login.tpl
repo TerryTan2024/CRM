@@ -145,6 +145,25 @@ body .container.content {
     line-height: 1.75;
 }
 
+.pd-summary span {
+    position: relative;
+    display: block;
+    padding-left: 18px;
+}
+
+.pd-summary span::before {
+    content: "";
+    position: absolute;
+    top: 0.85em;
+    left: 0;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #93c5fd;
+    box-shadow: 0 0 0 4px rgba(147, 197, 253, 0.18);
+    transform: translateY(-50%);
+}
+
 .pd-tags {
     display: flex;
     flex-wrap: wrap;
@@ -421,7 +440,11 @@ body .container.content {
 
             <div>
                 <h1 class="pd-title">智能客户管理</h1>
-                <p class="pd-summary">邮件、询盘、客服消息，自动归集<br>AI识别客户类型，自动分层<br>调取企业知识库，生成可确认的回复</p>
+                <p class="pd-summary">
+                    <span>邮件、询盘、客服消息，自动归集</span>
+                    <span>AI识别客户类型，自动分层</span>
+                    <span>调取企业知识库，生成可确认的回复</span>
+                </p>
             </div>
 
             <div class="pd-tags" aria-hidden="true">
