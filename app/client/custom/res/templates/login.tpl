@@ -440,7 +440,7 @@ body .container.content {
             </div>
 
             <div>
-                <h1 class="pd-title">智能客户管理</h1>
+                <h1 class="pd-title">CRM智能客户管理</h1>
                 <p class="pd-summary">
                     <span>邮件、询盘、客服消息，自动归集</span>
                     <span>AI识别客户类型，自动分层</span>
