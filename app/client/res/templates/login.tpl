@@ -17,6 +17,8 @@ body.login-page {
 }
 
 body.login-page .container.content {
+    display: grid;
+    grid-template-columns: minmax(0, 58fr) minmax(320px, 42fr);
     width: 100%;
     max-width: none;
     margin: 0;
@@ -275,6 +277,7 @@ body.login-page .container-centering {
 }
 
 @media (max-width: 980px) and (min-width: 521px) {
+    body.login-page .container.content,
     body.login-page .container-centering {
         grid-template-columns: minmax(0, 56fr) minmax(300px, 44fr);
     }
@@ -352,6 +355,12 @@ body.login-page .container-centering {
     }
 
     body.login-page .container-centering {
+        grid-template-columns: 1fr;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    body.login-page .container.content {
         grid-template-columns: 1fr;
         height: auto;
         min-height: 100vh;
