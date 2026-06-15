@@ -8,46 +8,50 @@
 html,
 body {
     min-height: 100%;
-}
-
-body.login-page {
-    margin: 0;
-    overflow: hidden;
-    background: #fbfcfe;
-    color: #101828;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: #f6f8fb !important;
+    color: #111827;
     font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
 }
 
-body.login-page .navbar,
-body.login-page footer {
+body .navbar,
+body footer,
+body .page-footer {
     display: none !important;
 }
 
-body.login-page .container.content {
+body > .container.content,
+body .container.content {
+    position: fixed !important;
+    inset: 0 !important;
     width: 100vw !important;
     max-width: none !important;
     height: 100vh !important;
     margin: 0 !important;
     padding: 0 !important;
+    overflow: hidden !important;
 }
 
 .pd-split {
     display: grid;
-    grid-template-columns: minmax(0, 58fr) minmax(320px, 42fr);
+    grid-template-columns: minmax(0, 1fr) minmax(360px, 1fr);
     width: 100vw;
     height: 100vh;
     overflow: hidden;
+    background: #f6f8fb;
 }
 
 .pd-left {
     position: relative;
     display: flex;
-    align-items: center;
+    align-items: stretch;
+    min-width: 0;
     overflow: hidden;
-    padding: 64px;
-    background:
-        linear-gradient(135deg, rgba(10, 27, 47, 0.96), rgba(15, 78, 91, 0.92)),
-        #0b1f34;
+    padding: 56px;
+    background: linear-gradient(135deg, #08213d 0%, #0f3b66 54%, #145a8a 100%);
+    color: #fff;
 }
 
 .pd-left::before {
@@ -57,103 +61,94 @@ body.login-page .container.content {
     background-image:
         linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
-    background-size: 44px 44px;
-    opacity: 0.82;
+    background-size: 48px 48px;
+    opacity: 0.72;
 }
 
 .pd-left::after {
     content: "";
     position: absolute;
-    right: -160px;
+    right: -180px;
     bottom: -180px;
     width: 520px;
     height: 520px;
-    border-radius: 50%;
     border: 1px solid rgba(255, 255, 255, 0.12);
-    background: radial-gradient(circle, rgba(77, 199, 185, 0.2), transparent 62%);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(96, 165, 250, 0.22), transparent 64%);
 }
 
 .pd-brand-content {
     position: relative;
     z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 100%;
-    max-width: 620px;
+    max-width: 560px;
 }
 
 .pd-brand {
     display: inline-flex;
     align-items: center;
-    gap: 12px;
-    margin-bottom: 72px;
+    gap: 14px;
     color: #fff;
     font-size: 18px;
-    font-weight: 720;
+    font-weight: 760;
 }
 
 .pd-brand-mark {
     display: grid;
-    width: 42px;
-    height: 42px;
+    width: 44px;
+    height: 44px;
     place-items: center;
-    border-radius: 12px;
+    border-radius: 10px;
     background: #fff;
-    color: #0f5f6d;
-    font-size: 18px;
-    font-weight: 800;
+    color: #1d4ed8;
+    font-size: 20px;
+    font-weight: 820;
 }
 
 .pd-kicker {
     margin-bottom: 16px;
-    color: #8fe4d8;
+    color: #bfdbfe;
     font-size: 12px;
-    font-weight: 700;
+    font-weight: 760;
     letter-spacing: 0.18em;
 }
 
 .pd-title {
-    max-width: 580px;
+    max-width: 520px;
     margin: 0;
     color: #fff;
-    font-size: 42px;
-    font-weight: 760;
-    line-height: 1.18;
+    font-size: 48px;
+    font-weight: 780;
+    line-height: 1.15;
 }
 
 .pd-summary {
-    max-width: 560px;
-    margin: 22px 0 42px;
-    color: rgba(255, 255, 255, 0.72);
-    font-size: 15px;
-    line-height: 1.85;
+    max-width: 440px;
+    margin: 22px 0 0;
+    color: rgba(255, 255, 255, 0.74);
+    font-size: 16px;
+    line-height: 1.75;
 }
 
-.pd-capability-list {
-    display: grid;
-    gap: 12px;
-    max-width: 520px;
-}
-
-.pd-capability-item {
+.pd-tags {
     display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 14px 16px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.075);
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 13px;
-    line-height: 1.6;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
-.pd-dot {
-    flex: 0 0 auto;
-    width: 8px;
-    height: 8px;
-    margin-top: 6px;
-    border-radius: 50%;
-    background: #8fe4d8;
-    box-shadow: 0 0 0 4px rgba(143, 228, 216, 0.12);
+.pd-tag {
+    min-width: 84px;
+    padding: 10px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.86);
+    font-size: 13px;
+    font-weight: 650;
+    text-align: center;
 }
 
 .pd-right {
@@ -161,11 +156,11 @@ body.login-page .container.content {
     align-items: center;
     justify-content: center;
     min-width: 0;
-    padding: 56px 48px;
-    background: #fbfcfe;
+    padding: 48px;
+    background: #f6f8fb;
 }
 
-body.login-page .container-centering {
+.container-centering {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -175,21 +170,22 @@ body.login-page .container-centering {
     padding: 0 !important;
 }
 
-body.login-page #login.panel {
+#login.panel {
     width: 100% !important;
     max-width: 380px !important;
     margin: 0 !important;
-    border: 0 !important;
-    background: transparent !important;
-    box-shadow: none !important;
+    border: 1px solid #e5e7eb !important;
+    border-radius: 10px !important;
+    background: #fff !important;
+    box-shadow: 0 18px 48px rgba(15, 23, 42, 0.08) !important;
 }
 
-body.login-page #login .panel-heading {
+#login .panel-heading {
     display: none !important;
 }
 
-body.login-page #login .panel-body {
-    padding: 0 !important;
+#login .panel-body {
+    padding: 42px !important;
 }
 
 .pd-login-copy {
@@ -197,94 +193,87 @@ body.login-page #login .panel-body {
 }
 
 .pd-login-label {
-    margin-bottom: 12px;
-    color: #0f5f6d;
+    margin-bottom: 10px;
+    color: #1d4ed8;
     font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 0.16em;
+    font-weight: 820;
+    letter-spacing: 0.18em;
 }
 
 .pd-login-copy h1 {
-    margin: 0 0 10px;
-    color: #101828;
-    font-size: 28px;
-    font-weight: 760;
+    margin: 0;
+    color: #111827;
+    font-size: 30px;
+    font-weight: 780;
+    line-height: 1.2;
 }
 
 .pd-login-copy p {
-    margin: 0;
-    color: #667085;
+    margin: 12px 0 0;
+    color: #6b7280;
     font-size: 14px;
-    line-height: 1.7;
+    line-height: 1.65;
 }
 
-.pd-login-note {
-    margin-top: 28px;
-    padding-top: 22px;
-    border-top: 1px solid #eaecf0;
-    color: #667085;
-    font-size: 12px;
-    line-height: 1.7;
-}
-
-body.login-page .form-group {
+.form-group {
     margin-bottom: 18px !important;
 }
 
-body.login-page .form-group label {
+.form-group label {
     display: block;
     margin-bottom: 8px;
-    color: #344054;
+    color: #374151;
     font-size: 13px !important;
     font-weight: 650 !important;
 }
 
-body.login-page .form-control {
+.form-control {
     width: 100%;
     height: 46px !important;
     padding: 0 14px !important;
-    border: 1px solid #d0d5dd !important;
+    border: 1px solid #cbd5e1 !important;
     border-radius: 8px !important;
     outline: none !important;
-    background: #fff !important;
-    color: #101828 !important;
+    background: #f8fafc !important;
+    color: #111827 !important;
     box-shadow: none !important;
     font-family: inherit !important;
     font-size: 14px !important;
-    transition: border-color 0.18s, box-shadow 0.18s;
+    transition: border-color 0.18s, box-shadow 0.18s, background 0.18s;
 }
 
-body.login-page .form-control:focus {
-    border-color: #0f8a7d !important;
-    box-shadow: 0 0 0 3px rgba(15, 138, 125, 0.14) !important;
+.form-control:focus {
+    border-color: #2563eb !important;
+    background: #fff !important;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.14) !important;
 }
 
-body.login-page [data-role="password-input-container"] {
+[data-role="password-input-container"] {
     position: relative;
 }
 
-body.login-page [data-role="password-input-container"] input {
+[data-role="password-input-container"] input {
     padding-right: 44px !important;
 }
 
-body.login-page [data-action="toggleShowPassword"] {
+[data-action="toggleShowPassword"] {
     position: absolute;
     top: 50%;
     right: 12px;
-    color: #98a2b3;
+    color: #94a3b8;
     transform: translateY(-50%);
 }
 
-body.login-page [data-name="submit"] {
-    margin-top: 8px !important;
+[data-name="submit"] {
+    margin-top: 10px !important;
 }
 
-body.login-page #btn-login {
+#btn-login {
     width: 100% !important;
     height: 48px !important;
     border: none !important;
     border-radius: 8px !important;
-    background: #0f5f6d !important;
+    background: #1d4ed8 !important;
     color: #fff !important;
     cursor: pointer;
     font-family: inherit !important;
@@ -293,14 +282,21 @@ body.login-page #btn-login {
     transition: background 0.18s, transform 0.18s, box-shadow 0.18s;
 }
 
-body.login-page #btn-login:hover {
-    background: #0b4e5a !important;
-    box-shadow: 0 10px 24px rgba(15, 95, 109, 0.18) !important;
+#btn-login:hover {
+    background: #1e40af !important;
+    box-shadow: 0 10px 24px rgba(29, 78, 216, 0.22) !important;
     transform: translateY(-1px);
 }
 
-body.login-page .alert,
-body.login-page .message {
+.pd-login-note {
+    margin: 22px 0 0;
+    color: #9ca3af;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.alert,
+.message {
     margin-bottom: 18px !important;
     padding: 12px 14px !important;
     border: 1px solid #fecaca !important;
@@ -313,70 +309,44 @@ body.login-page .message {
 
 @media (max-width: 980px) and (min-width: 521px) {
     .pd-split {
-        grid-template-columns: minmax(0, 56fr) minmax(300px, 44fr);
+        grid-template-columns: minmax(0, 1fr) minmax(320px, 1fr);
     }
 
     .pd-left {
-        padding: 34px 28px;
-    }
-
-    .pd-brand {
-        margin-bottom: 34px;
-        font-size: 16px;
-    }
-
-    .pd-brand-mark {
-        width: 36px;
-        height: 36px;
-        border-radius: 10px;
+        padding: 36px;
     }
 
     .pd-title {
-        font-size: 30px;
-        line-height: 1.24;
+        font-size: 34px;
     }
 
     .pd-summary {
-        margin: 16px 0 24px;
-        font-size: 13px;
-        line-height: 1.7;
-    }
-
-    .pd-kicker {
-        margin-bottom: 12px;
-        font-size: 11px;
-    }
-
-    .pd-capability-list {
-        gap: 10px;
-    }
-
-    .pd-capability-item {
-        padding: 11px 12px;
-        font-size: 12px;
-        line-height: 1.5;
+        font-size: 14px;
     }
 
     .pd-right {
-        padding: 32px 22px;
+        padding: 28px;
     }
 
-    body.login-page #login.panel {
-        max-width: 300px !important;
+    #login.panel {
+        max-width: 340px !important;
     }
 
-    .pd-login-copy h1 {
-        font-size: 25px;
+    #login .panel-body {
+        padding: 32px !important;
     }
 }
 
 @media (max-width: 520px) {
-    body.login-page {
-        overflow: auto;
+    html,
+    body {
+        overflow: auto !important;
     }
 
-    body.login-page .container.content,
+    body > .container.content,
+    body .container.content,
     .pd-split {
+        position: static !important;
         height: auto !important;
         min-height: 100vh;
     }
@@ -386,16 +356,24 @@ body.login-page .message {
     }
 
     .pd-left {
-        min-height: 420px;
-        padding: 40px 28px;
+        min-height: 300px;
+        padding: 34px 24px;
     }
 
     .pd-title {
         font-size: 32px;
     }
 
+    .pd-tags {
+        display: none;
+    }
+
     .pd-right {
-        padding: 40px 24px;
+        padding: 32px 20px;
+    }
+
+    #login .panel-body {
+        padding: 30px 24px !important;
     }
 }
 </style>
@@ -408,25 +386,16 @@ body.login-page .message {
                 <span>飞迭 PHIDIE</span>
             </div>
 
-            <div class="pd-kicker">CUSTOMER OPERATIONS</div>
-            <h1 class="pd-title">统一客户消息，清晰推进每一次跟进。</h1>
-            <p class="pd-summary">
-                面向邮件、网站询盘和客服消息的客户管理工作台，帮助团队识别客户需求、沉淀知识依据，并形成可确认的回复建议。
-            </p>
+            <div>
+                <div class="pd-kicker">CUSTOMER OPERATIONS</div>
+                <h1 class="pd-title">智能客户管理</h1>
+                <p class="pd-summary">邮件、询盘、客服消息统一归集，跟进清晰可控。</p>
+            </div>
 
-            <div class="pd-capability-list">
-                <div class="pd-capability-item">
-                    <span class="pd-dot"></span>
-                    <span>邮件、询盘、客服消息，自动归集。</span>
-                </div>
-                <div class="pd-capability-item">
-                    <span class="pd-dot"></span>
-                    <span>自动标记客户类型、需求阶段和下一步动作。</span>
-                </div>
-                <div class="pd-capability-item">
-                    <span class="pd-dot"></span>
-                    <span>结合企业知识库生成可确认的回复建议。</span>
-                </div>
+            <div class="pd-tags" aria-hidden="true">
+                <span class="pd-tag">邮件</span>
+                <span class="pd-tag">询盘</span>
+                <span class="pd-tag">客服</span>
             </div>
         </div>
     </section>
@@ -444,7 +413,7 @@ body.login-page .message {
                         <div class="pd-login-copy">
                             <div class="pd-login-label">PHIDIE CRM</div>
                             <h1>登录系统</h1>
-                            <p>进入客户管理工作台，处理线索、消息与跟进任务。</p>
+                            <p>进入客户管理工作台。</p>
                         </div>
                         <form id="login-form">
                             <div class="form-group cell" data-name="username">
@@ -496,7 +465,7 @@ body.login-page .message {
                                 >登录</button>
                             </div>
                         </form>
-                        <p class="pd-login-note">安全提示：请使用企业账号登录，所有回复建议需确认后再发送。</p>
+                        <p class="pd-login-note">回复建议需确认后再发送。</p>
                     </div>
                 </div>
             </div>
