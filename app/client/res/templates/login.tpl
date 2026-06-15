@@ -396,7 +396,7 @@ body.login-page .container-centering {
         <div class="capability-list">
             <div class="capability-item">
                 <span class="capability-dot"></span>
-                <span>客户邮件、网站询盘、客服消息统一进入系统。</span>
+                <span>邮件、询盘、客服消息，自动归集。</span>
             </div>
             <div class="capability-item">
                 <span class="capability-dot"></span>
