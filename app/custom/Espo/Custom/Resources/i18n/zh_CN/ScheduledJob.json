@@ -1,0 +1,7 @@
+{
+    "options": {
+        "job": {
+            "ProcessCustomerEmails": "处理客户邮件"
+        }
+    }
+}

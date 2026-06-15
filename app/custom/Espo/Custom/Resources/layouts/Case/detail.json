@@ -1,16 +1,18 @@
 [
     {
-        "label": "智能处理",
+        "label": "\u667a\u80fd\u5904\u7406",
         "rows": [
             [{"name": "customerType"}, {"name": "demandStage"}],
             [{"name": "sourceChannel"}, {"name": "nextAction"}],
             [{"name": "replyApprovalStatus"}, {"name": "assignedUser"}],
+            [{"name": "sourceEmailFrom"}, {"name": "aiProcessedAt"}],
+            [{"name": "sourceEmailId"}, false],
             [{"name": "aiReplySuggestion", "fullWidth": true}],
             [{"name": "knowledgeBaseEvidence", "fullWidth": true}]
         ]
     },
     {
-        "label": "消息与客户",
+        "label": "\u6d88\u606f\u4e0e\u5ba2\u6237",
         "rows": [
             [{"name": "name"}, {"name": "number"}],
             [{"name": "status"}, {"name": "account"}],

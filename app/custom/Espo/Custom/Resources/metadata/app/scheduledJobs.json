@@ -1,0 +1,7 @@
+{
+    "ProcessCustomerEmails": {
+        "name": "Process Customer Emails",
+        "jobClassName": "Espo\\Custom\\Classes\\Jobs\\ProcessCustomerEmails",
+        "scheduling": "*/5 * * * *"
+    }
+}
