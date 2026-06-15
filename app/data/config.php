@@ -50,7 +50,7 @@ return [
     0 => (object) [
       'type' => 'divider',
       'id' => '342567',
-      'text' => '客户中枢'
+      'text' => '客户关系管理'
     ],
     1 => 'Account',
     2 => 'Contact',
