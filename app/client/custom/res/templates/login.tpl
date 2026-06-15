@@ -1,5 +1,7 @@
 <style>
-* {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
@@ -11,32 +13,33 @@ body {
 body.login-page {
     margin: 0;
     overflow: hidden;
-    background: #eef2f6;
+    background: #fbfcfe;
     color: #101828;
     font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
 }
 
-body.login-page .container.content {
-    display: grid;
-    grid-template-columns: minmax(0, 58fr) minmax(320px, 42fr);
-    width: 100%;
-    max-width: none;
-    margin: 0;
-    padding: 0;
-    height: 100vh;
+body.login-page .navbar,
+body.login-page footer {
+    display: none !important;
 }
 
-body.login-page .container-centering {
-    display: grid;
-    grid-template-columns: minmax(0, 58fr) minmax(320px, 42fr);
-    height: 100vh;
-    min-height: 100vh;
+body.login-page .container.content {
+    width: 100vw !important;
+    max-width: none !important;
+    height: 100vh !important;
     margin: 0 !important;
     padding: 0 !important;
-    align-items: stretch !important;
 }
 
-.brand-panel {
+.pd-split {
+    display: grid;
+    grid-template-columns: minmax(0, 58fr) minmax(320px, 42fr);
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.pd-left {
     position: relative;
     display: flex;
     align-items: center;
@@ -47,7 +50,7 @@ body.login-page .container-centering {
         #0b1f34;
 }
 
-.brand-panel::before {
+.pd-left::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -55,10 +58,10 @@ body.login-page .container-centering {
         linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
     background-size: 44px 44px;
-    opacity: 0.8;
+    opacity: 0.82;
 }
 
-.brand-panel::after {
+.pd-left::after {
     content: "";
     position: absolute;
     right: -160px;
@@ -70,14 +73,14 @@ body.login-page .container-centering {
     background: radial-gradient(circle, rgba(77, 199, 185, 0.2), transparent 62%);
 }
 
-.brand-content {
+.pd-brand-content {
     position: relative;
     z-index: 1;
     width: 100%;
     max-width: 620px;
 }
 
-.brand-logo {
+.pd-brand {
     display: inline-flex;
     align-items: center;
     gap: 12px;
@@ -87,7 +90,7 @@ body.login-page .container-centering {
     font-weight: 720;
 }
 
-.brand-logo-mark {
+.pd-brand-mark {
     display: grid;
     width: 42px;
     height: 42px;
@@ -99,7 +102,7 @@ body.login-page .container-centering {
     font-weight: 800;
 }
 
-.brand-kicker {
+.pd-kicker {
     margin-bottom: 16px;
     color: #8fe4d8;
     font-size: 12px;
@@ -107,7 +110,7 @@ body.login-page .container-centering {
     letter-spacing: 0.18em;
 }
 
-.brand-title {
+.pd-title {
     max-width: 580px;
     margin: 0;
     color: #fff;
@@ -116,7 +119,7 @@ body.login-page .container-centering {
     line-height: 1.18;
 }
 
-.brand-summary {
+.pd-summary {
     max-width: 560px;
     margin: 22px 0 42px;
     color: rgba(255, 255, 255, 0.72);
@@ -124,13 +127,13 @@ body.login-page .container-centering {
     line-height: 1.85;
 }
 
-.capability-list {
+.pd-capability-list {
     display: grid;
     gap: 12px;
     max-width: 520px;
 }
 
-.capability-item {
+.pd-capability-item {
     display: flex;
     align-items: flex-start;
     gap: 12px;
@@ -143,7 +146,7 @@ body.login-page .container-centering {
     line-height: 1.6;
 }
 
-.capability-dot {
+.pd-dot {
     flex: 0 0 auto;
     width: 8px;
     height: 8px;
@@ -153,25 +156,47 @@ body.login-page .container-centering {
     box-shadow: 0 0 0 4px rgba(143, 228, 216, 0.12);
 }
 
-.login-panel {
+.pd-right {
     display: flex;
     align-items: center;
     justify-content: center;
+    min-width: 0;
     padding: 56px 48px;
     background: #fbfcfe;
-    min-width: 0;
 }
 
-.login-card {
-    width: 100%;
-    max-width: 380px;
+body.login-page .container-centering {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
-.login-header {
-    margin-bottom: 32px;
+body.login-page #login.panel {
+    width: 100% !important;
+    max-width: 380px !important;
+    margin: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
 }
 
-.login-label {
+body.login-page #login .panel-heading {
+    display: none !important;
+}
+
+body.login-page #login .panel-body {
+    padding: 0 !important;
+}
+
+.pd-login-copy {
+    margin-bottom: 28px;
+}
+
+.pd-login-label {
     margin-bottom: 12px;
     color: #0f5f6d;
     font-size: 12px;
@@ -179,91 +204,21 @@ body.login-page .container-centering {
     letter-spacing: 0.16em;
 }
 
-.login-header h1 {
+.pd-login-copy h1 {
     margin: 0 0 10px;
     color: #101828;
     font-size: 28px;
     font-weight: 760;
 }
 
-.login-header p {
+.pd-login-copy p {
     margin: 0;
     color: #667085;
     font-size: 14px;
     line-height: 1.7;
 }
 
-.phidie-message {
-    margin-bottom: 18px;
-    padding: 12px 14px;
-    border: 1px solid #fecaca;
-    border-left: 3px solid #ef4444;
-    border-radius: 8px;
-    background: #fff1f2;
-    color: #991b1b;
-    font-size: 13px;
-}
-
-.phidie-form-group {
-    margin-bottom: 18px;
-}
-
-.phidie-form-group label {
-    display: block;
-    margin-bottom: 8px;
-    color: #344054;
-    font-size: 13px;
-    font-weight: 650;
-}
-
-.phidie-form-group input {
-    width: 100%;
-    height: 46px;
-    padding: 0 14px;
-    border: 1px solid #d0d5dd;
-    border-radius: 8px;
-    outline: none;
-    background: #fff;
-    color: #101828;
-    font-size: 14px;
-    transition: border-color 0.18s, box-shadow 0.18s;
-}
-
-.phidie-form-group input::placeholder {
-    color: #98a2b3;
-}
-
-.phidie-form-group input:focus {
-    border-color: #0f8a7d;
-    box-shadow: 0 0 0 3px rgba(15, 138, 125, 0.14);
-}
-
-#btn-login {
-    width: 100%;
-    height: 48px;
-    margin-top: 8px;
-    border: none;
-    border-radius: 8px;
-    background: #0f5f6d;
-    color: #fff;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 15px;
-    font-weight: 720;
-    transition: background 0.18s, transform 0.18s, box-shadow 0.18s;
-}
-
-#btn-login:hover {
-    background: #0b4e5a;
-    box-shadow: 0 10px 24px rgba(15, 95, 109, 0.18);
-    transform: translateY(-1px);
-}
-
-#btn-login:active {
-    transform: translateY(0);
-}
-
-.login-note {
+.pd-login-note {
     margin-top: 28px;
     padding-top: 22px;
     border-top: 1px solid #eaecf0;
@@ -272,80 +227,146 @@ body.login-page .container-centering {
     line-height: 1.7;
 }
 
-.login-note strong {
+body.login-page .form-group {
+    margin-bottom: 18px !important;
+}
+
+body.login-page .form-group label {
+    display: block;
+    margin-bottom: 8px;
     color: #344054;
+    font-size: 13px !important;
+    font-weight: 650 !important;
+}
+
+body.login-page .form-control {
+    width: 100%;
+    height: 46px !important;
+    padding: 0 14px !important;
+    border: 1px solid #d0d5dd !important;
+    border-radius: 8px !important;
+    outline: none !important;
+    background: #fff !important;
+    color: #101828 !important;
+    box-shadow: none !important;
+    font-family: inherit !important;
+    font-size: 14px !important;
+    transition: border-color 0.18s, box-shadow 0.18s;
+}
+
+body.login-page .form-control:focus {
+    border-color: #0f8a7d !important;
+    box-shadow: 0 0 0 3px rgba(15, 138, 125, 0.14) !important;
+}
+
+body.login-page [data-role="password-input-container"] {
+    position: relative;
+}
+
+body.login-page [data-role="password-input-container"] input {
+    padding-right: 44px !important;
+}
+
+body.login-page [data-action="toggleShowPassword"] {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    color: #98a2b3;
+    transform: translateY(-50%);
+}
+
+body.login-page [data-name="submit"] {
+    margin-top: 8px !important;
+}
+
+body.login-page #btn-login {
+    width: 100% !important;
+    height: 48px !important;
+    border: none !important;
+    border-radius: 8px !important;
+    background: #0f5f6d !important;
+    color: #fff !important;
+    cursor: pointer;
+    font-family: inherit !important;
+    font-size: 15px !important;
+    font-weight: 720 !important;
+    transition: background 0.18s, transform 0.18s, box-shadow 0.18s;
+}
+
+body.login-page #btn-login:hover {
+    background: #0b4e5a !important;
+    box-shadow: 0 10px 24px rgba(15, 95, 109, 0.18) !important;
+    transform: translateY(-1px);
+}
+
+body.login-page .alert,
+body.login-page .message {
+    margin-bottom: 18px !important;
+    padding: 12px 14px !important;
+    border: 1px solid #fecaca !important;
+    border-left: 3px solid #ef4444 !important;
+    border-radius: 8px !important;
+    background: #fff1f2 !important;
+    color: #991b1b !important;
+    font-size: 13px !important;
 }
 
 @media (max-width: 980px) and (min-width: 521px) {
-    body.login-page .container.content,
-    body.login-page .container-centering {
+    .pd-split {
         grid-template-columns: minmax(0, 56fr) minmax(300px, 44fr);
     }
 
-    .brand-panel {
+    .pd-left {
         padding: 34px 28px;
     }
 
-    .brand-logo {
+    .pd-brand {
         margin-bottom: 34px;
         font-size: 16px;
     }
 
-    .brand-logo-mark {
+    .pd-brand-mark {
         width: 36px;
         height: 36px;
         border-radius: 10px;
     }
 
-    .brand-title {
+    .pd-title {
         font-size: 30px;
         line-height: 1.24;
     }
 
-    .brand-summary {
+    .pd-summary {
         margin: 16px 0 24px;
         font-size: 13px;
         line-height: 1.7;
     }
 
-    .brand-kicker {
+    .pd-kicker {
         margin-bottom: 12px;
         font-size: 11px;
     }
 
-    .capability-list {
+    .pd-capability-list {
         gap: 10px;
     }
 
-    .capability-item {
+    .pd-capability-item {
         padding: 11px 12px;
         font-size: 12px;
         line-height: 1.5;
     }
 
-    .login-panel {
+    .pd-right {
         padding: 32px 22px;
     }
 
-    .login-card {
-        max-width: 300px;
+    body.login-page #login.panel {
+        max-width: 300px !important;
     }
 
-    .login-header {
-        margin-bottom: 24px;
-    }
-
-    .login-header h1 {
+    .pd-login-copy h1 {
         font-size: 25px;
-    }
-
-    .login-header p {
-        font-size: 13px;
-    }
-
-    .login-note {
-        margin-top: 20px;
-        padding-top: 18px;
     }
 }
 
@@ -354,117 +375,132 @@ body.login-page .container-centering {
         overflow: auto;
     }
 
-    body.login-page .container-centering {
-        grid-template-columns: 1fr;
-        height: auto;
+    body.login-page .container.content,
+    .pd-split {
+        height: auto !important;
         min-height: 100vh;
     }
 
-    body.login-page .container.content {
+    .pd-split {
         grid-template-columns: 1fr;
-        height: auto;
-        min-height: 100vh;
     }
 
-    .brand-panel {
+    .pd-left {
         min-height: 420px;
         padding: 40px 28px;
     }
 
-    .brand-logo {
-        margin-bottom: 42px;
-    }
-
-    .brand-title {
+    .pd-title {
         font-size: 32px;
     }
 
-    .brand-summary {
-        margin-bottom: 26px;
-    }
-
-    .login-panel {
+    .pd-right {
         padding: 40px 24px;
     }
 }
 </style>
 
-<section class="brand-panel">
-    <div class="brand-content">
-        <div class="brand-logo">
-            <span class="brand-logo-mark">P</span>
-            <span>飞迭 PHIDIE</span>
+<div class="pd-split">
+    <section class="pd-left">
+        <div class="pd-brand-content">
+            <div class="pd-brand">
+                <span class="pd-brand-mark">P</span>
+                <span>飞迭 PHIDIE</span>
+            </div>
+
+            <div class="pd-kicker">CUSTOMER OPERATIONS</div>
+            <h1 class="pd-title">统一客户消息，清晰推进每一次跟进。</h1>
+            <p class="pd-summary">
+                面向邮件、网站询盘和客服消息的客户管理工作台，帮助团队识别客户需求、沉淀知识依据，并形成可确认的回复建议。
+            </p>
+
+            <div class="pd-capability-list">
+                <div class="pd-capability-item">
+                    <span class="pd-dot"></span>
+                    <span>邮件、询盘、客服消息，自动归集。</span>
+                </div>
+                <div class="pd-capability-item">
+                    <span class="pd-dot"></span>
+                    <span>自动标记客户类型、需求阶段和下一步动作。</span>
+                </div>
+                <div class="pd-capability-item">
+                    <span class="pd-dot"></span>
+                    <span>结合企业知识库生成可确认的回复建议。</span>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="brand-kicker">CUSTOMER OPERATIONS</div>
-        <h1 class="brand-title">统一客户消息，清晰推进每一次跟进。</h1>
-        <p class="brand-summary">
-            面向邮件、网站询盘和客服消息的客户管理工作台，帮助团队识别客户需求、沉淀知识依据，并形成可确认的回复建议。
-        </p>
+    <section class="pd-right">
+        <div class="container-centering">
+            <div id="login" class="panel panel-default block-center-sm">
+                <div class="panel-heading">
+                    <div class="logo-container">
+                        <img src="{{logoSrc}}" class="logo" style="display:none">
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div>
+                        <div class="pd-login-copy">
+                            <div class="pd-login-label">PHIDIE CRM</div>
+                            <h1>登录系统</h1>
+                            <p>进入客户管理工作台，处理线索、消息与跟进任务。</p>
+                        </div>
+                        <form id="login-form">
+                            <div class="form-group cell" data-name="username">
+                                <label for="field-userName">账号</label>
+                                <input
+                                    type="text"
+                                    name="username"
+                                    id="field-userName"
+                                    class="form-control"
+                                    autocapitalize="off"
+                                    spellcheck="false"
+                                    tabindex="1"
+                                    autocomplete="username"
+                                    maxlength="255"
+                                    placeholder="请输入账号"
+                                >
+                            </div>
 
-        <div class="capability-list">
-            <div class="capability-item">
-                <span class="capability-dot"></span>
-                <span>邮件、询盘、客服消息，自动归集。</span>
-            </div>
-            <div class="capability-item">
-                <span class="capability-dot"></span>
-                <span>自动标记客户类型、需求阶段和下一步动作。</span>
-            </div>
-            <div class="capability-item">
-                <span class="capability-dot"></span>
-                <span>结合企业知识库生成可确认的回复建议。</span>
+                            <div class="form-group cell" data-name="password">
+                                <label for="field-password">密码</label>
+                                <div data-role="password-input-container">
+                                    <input
+                                        type="password"
+                                        name="password"
+                                        id="field-password"
+                                        class="form-control"
+                                        tabindex="2"
+                                        autocomplete="current-password"
+                                        maxlength="255"
+                                        placeholder="请输入密码"
+                                    >
+                                    <a
+                                        role="button"
+                                        data-action="toggleShowPassword"
+                                        class="text-soft"
+                                        title="查看密码"
+                                    >
+                                        <span class="far fa-eye"></span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="margin-top-2x cell" data-name="submit">
+                                <button
+                                    type="submit"
+                                    class="btn btn-primary btn-s-wide"
+                                    id="btn-login"
+                                    tabindex="3"
+                                >登录</button>
+                            </div>
+                        </form>
+                        <p class="pd-login-note">安全提示：请使用企业账号登录，所有回复建议需确认后再发送。</p>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</section>
-
-<section class="login-panel">
-    <div class="login-card">
-        <div class="login-header">
-            <div class="login-label">PHIDIE CRM</div>
-            <h1>登录系统</h1>
-            <p>进入客户管理工作台，处理线索、消息与跟进任务。</p>
-        </div>
-
-        {{#if message}}
-        <div class="phidie-message">{{message}}</div>
-        {{/if}}
-
-        <form id="login-form" autocomplete="on">
-            <div class="phidie-form-group" data-name="username">
-                <label for="field-userName">账号</label>
-                <input
-                    type="text"
-                    name="username"
-                    id="field-userName"
-                    placeholder="请输入账号"
-                    autocapitalize="off"
-                    spellcheck="false"
-                    tabindex="1"
-                    autocomplete="username"
-                    maxlength="255"
-                >
-            </div>
-
-            <div class="phidie-form-group" data-name="password">
-                <label for="field-password">密码</label>
-                <input
-                    type="password"
-                    name="password"
-                    id="field-password"
-                    placeholder="请输入密码"
-                    tabindex="2"
-                    autocomplete="current-password"
-                    maxlength="255"
-                >
-            </div>
-
-            <button id="btn-login" type="button" tabindex="3">登录</button>
-        </form>
-
-        <p class="login-note">
-            <strong>安全提示：</strong>请使用企业账号登录，所有回复建议需确认后再发送。
-        </p>
-    </div>
-</section>
+    </section>
+</div>
+<footer>{{{footer}}}</footer>
