@@ -270,14 +270,6 @@ body .container.content {
     margin-bottom: 22px;
 }
 
-.pd-login-label {
-    margin-bottom: 10px;
-    color: #1d4ed8;
-    font-size: 12px;
-    font-weight: 820;
-    letter-spacing: 0.18em;
-}
-
 .pd-login-copy h1 {
     margin: 0;
     color: #111827;
@@ -513,7 +505,6 @@ body .container.content {
                 <div class="panel-body">
                     <div>
                         <div class="pd-login-copy">
-                            <div class="pd-login-label">PHIDIE CRM</div>
                             <h1>登录系统</h1>
                             <p>进入客户管理工作台。</p>
                         </div>
