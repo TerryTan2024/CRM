@@ -8,7 +8,7 @@
         "KnowledgeBaseArticle": "知识库文章",
         "KnowledgeBaseCategory": "知识库分类",
         "Email": "电子邮件",
-        "Task": "跟进任务",
+        "Task": "任务",
         "Call": "通话",
         "Meeting": "会议",
         "Document": "资料文件"
@@ -22,7 +22,7 @@
         "KnowledgeBaseArticle": "知识库",
         "KnowledgeBaseCategory": "知识库分类",
         "Email": "电子邮件",
-        "Task": "跟进任务",
+        "Task": "任务",
         "Call": "通话",
         "Meeting": "会议",
         "Document": "资料文件"
@@ -36,20 +36,20 @@
         "opportunities": "商机",
         "cases": "客户消息",
         "emails": "电子邮件",
-        "tasks": "跟进任务",
+        "tasks": "任务",
         "articles": "知识库文章"
     },
     "dashlets": {
         "Leads": "我的潜在客户",
         "Cases": "待处理客户消息",
-        "Tasks": "我的跟进任务",
+        "Tasks": "我的任务",
         "Opportunities": "商机",
         "Activities": "近期协作"
     },
     "labels": {
         "Create Lead": "创建潜在客户",
         "Create Case": "创建客户消息",
-        "Create Task": "创建跟进任务",
+        "Create Task": "创建任务",
         "Compose Email": "撰写电子邮件",
         "Archive Email": "归档电子邮件"
     }
