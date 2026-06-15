@@ -179,22 +179,31 @@ body .container.content {
 }
 
 .pd-brand-mark {
+    position: relative;
     display: inline-flex;
     width: 48px;
     height: 48px;
     align-items: center;
     justify-content: center;
     flex: 0 0 auto;
-    border-radius: 14px;
-    background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 54%, #0891b2 100%);
-    color: #fff;
-    box-shadow: 0 16px 34px rgba(37, 99, 235, 0.22);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.92);
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 14px 34px rgba(33, 64, 112, 0.12);
 }
 
-.pd-brand-mark svg {
-    display: block;
-    width: 30px;
-    height: 30px;
+.pd-brand-mark::before {
+    content: "";
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    border-radius: 50%;
+    background:
+        conic-gradient(from 212deg at 48% 52%, rgba(219, 234, 254, 0.98), rgba(255, 255, 255, 0.94), rgba(254, 243, 199, 0.86), rgba(226, 232, 240, 0.82), rgba(219, 234, 254, 0.98)),
+        radial-gradient(circle at 42% 48%, rgba(255, 255, 255, 0.98) 0 16%, transparent 18%),
+        radial-gradient(circle at 58% 64%, rgba(37, 99, 235, 0.12) 0 7%, transparent 12%);
+    box-shadow: inset 0 1px 10px rgba(255, 255, 255, 0.7), 0 8px 18px rgba(15, 23, 42, 0.08);
 }
 
 .pd-title {
@@ -484,15 +493,7 @@ body .container.content {
     <section class="pd-left">
         <div class="pd-brand-content">
             <div class="pd-brand">
-                <span class="pd-brand-mark" aria-hidden="true">
-                    <svg viewBox="0 0 32 32" focusable="false">
-                        <path d="M8 7v18" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
-                        <path d="M8 8h11.2c4.1 0 6.8 2.5 6.8 6.1s-2.7 6.1-6.8 6.1H8" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M12 14h8.2" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" opacity="0.86"/>
-                        <circle cx="23.8" cy="8.2" r="2.2" fill="currentColor" opacity="0.9"/>
-                        <circle cx="24.6" cy="23.5" r="2.2" fill="currentColor" opacity="0.55"/>
-                    </svg>
-                </span>
+                <span class="pd-brand-mark" aria-hidden="true"></span>
                 <span>飞迭智客</span>
             </div>
 
