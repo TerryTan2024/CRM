@@ -20,12 +20,16 @@ body.login-page .container.content {
     max-width: none;
     margin: 0;
     padding: 0;
+    height: 100vh;
 }
 
 body.login-page .container-centering {
     display: grid;
     grid-template-columns: minmax(480px, 0.92fr) minmax(420px, 0.58fr);
     min-height: 100vh;
+    margin: 0 !important;
+    padding: 0 !important;
+    align-items: stretch !important;
 }
 
 .brand-panel {
