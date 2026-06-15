@@ -7,7 +7,7 @@
         "Case": "客户消息",
         "KnowledgeBaseArticle": "知识库文章",
         "KnowledgeBaseCategory": "知识库分类",
-        "Email": "客户邮件",
+        "Email": "电子邮件",
         "Task": "跟进任务",
         "Call": "电话记录",
         "Meeting": "会议记录",
@@ -21,7 +21,7 @@
         "Case": "客户消息",
         "KnowledgeBaseArticle": "知识库",
         "KnowledgeBaseCategory": "知识库分类",
-        "Email": "客户邮件",
+        "Email": "电子邮件",
         "Task": "跟进任务",
         "Call": "电话记录",
         "Meeting": "会议记录",
@@ -35,7 +35,7 @@
         "leads": "潜在客户",
         "opportunities": "商机",
         "cases": "客户消息",
-        "emails": "客户邮件",
+        "emails": "电子邮件",
         "tasks": "跟进任务",
         "articles": "知识库文章"
     },
@@ -50,7 +50,7 @@
         "Create Lead": "创建潜在客户",
         "Create Case": "创建客户消息",
         "Create Task": "创建跟进任务",
-        "Compose Email": "撰写客户邮件",
-        "Archive Email": "归档客户邮件"
+        "Compose Email": "撰写电子邮件",
+        "Archive Email": "归档电子邮件"
     }
 }
