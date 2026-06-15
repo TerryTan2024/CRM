@@ -141,6 +141,46 @@ body:not(.login-page) .page-content {
         linear-gradient(180deg, #f3f8ff 0%, #eaf4ff 48%, #dfeeff 100%) !important;
 }
 
+body:not(.login-page) .panel,
+body:not(.login-page) .panel-default,
+body:not(.login-page) .panel-body,
+body:not(.login-page) .list,
+body:not(.login-page) .list-container .list,
+body:not(.login-page) .list-group,
+body:not(.login-page) .list-group-item,
+body:not(.login-page) .record-list,
+body:not(.login-page) .kanban,
+body:not(.login-page) .kanban-board,
+body:not(.login-page) .kanban-container,
+body:not(.login-page) .dashlet,
+body:not(.login-page) .email-folder-list,
+body:not(.login-page) .middle,
+body:not(.login-page) .bottom {
+    background: transparent !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+}
+
+body:not(.login-page) .page-header,
+body:not(.login-page) .list-row,
+body:not(.login-page) .list-row > .cell,
+body:not(.login-page) .table,
+body:not(.login-page) .table > thead > tr > th,
+body:not(.login-page) .table > tbody > tr > td,
+body:not(.login-page) .table > tbody > tr > th,
+body:not(.login-page) .table > tfoot > tr > td,
+body:not(.login-page) .table > tfoot > tr > th {
+    background: transparent !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+}
+
+body:not(.login-page) .list-row:hover,
+body:not(.login-page) .table-hover > tbody > tr:hover > td,
+body:not(.login-page) .table-hover > tbody > tr:hover > th {
+    background: rgba(255, 255, 255, 0.28) !important;
+}
+
 .field[data-name="aiReplySuggestion"] textarea,
 .field[data-name="knowledgeBaseEvidence"] textarea {
     min-height: 132px;
