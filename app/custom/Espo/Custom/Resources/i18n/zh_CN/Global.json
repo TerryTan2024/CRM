@@ -1,6 +1,6 @@
 {
     "scopeNames": {
-        "Account": "客户公司",
+        "Account": "客户",
         "Contact": "联系人",
         "Lead": "客户线索",
         "Opportunity": "销售机会",
@@ -14,7 +14,7 @@
         "Document": "资料文件"
     },
     "scopeNamesPlural": {
-        "Account": "客户公司",
+        "Account": "客户",
         "Contact": "联系人",
         "Lead": "客户线索",
         "Opportunity": "销售机会",
@@ -28,8 +28,8 @@
         "Document": "资料文件"
     },
     "links": {
-        "accounts": "客户公司",
-        "account": "客户公司",
+        "accounts": "客户",
+        "account": "客户",
         "contacts": "联系人",
         "contact": "联系人",
         "leads": "客户线索",
