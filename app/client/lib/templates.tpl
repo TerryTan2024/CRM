@@ -281,10 +281,10 @@ body .container.content {
     width: 100% !important;
     max-width: 400px !important;
     margin: 0 !important;
-    border: 0 !important;
-    border-radius: 0 !important;
-    background: transparent !important;
-    box-shadow: none !important;
+    border: 1px solid rgba(226, 232, 240, 0.95) !important;
+    border-radius: 16px !important;
+    background: rgba(255, 255, 255, 0.92) !important;
+    box-shadow: 0 24px 70px rgba(15, 23, 42, 0.11), 0 2px 8px rgba(15, 23, 42, 0.04) !important;
     transform: translateY(-150px);
 }
 
