@@ -382,13 +382,6 @@ body .container.content {
     transform: translateY(-1px);
 }
 
-.pd-login-note {
-    margin: 22px 0 0;
-    color: #9ca3af;
-    font-size: 12px;
-    line-height: 1.6;
-    text-align: center;
-}
 
 .alert,
 .message {
@@ -572,7 +565,6 @@ body .container.content {
                                 >登录</button>
                             </div>
                         </form>
-                        <p class="pd-login-note">回复建议需确认后再发送。</p>
                     </div>
                 </div>
             </div>
