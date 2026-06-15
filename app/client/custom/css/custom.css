@@ -76,10 +76,13 @@ body:not(.login-page) footer .credit a[href*="espocrm"] {
 }
 
 body:not(.login-page) {
+    --body-bg: #f7fbff;
     --navbar-inverse-bg: transparent;
     --navbar-inverse-link-active-bg: rgba(255, 255, 255, 0.58);
     --navbar-inverse-link-hover-bg: rgba(255, 255, 255, 0.5);
     --navbar-inverse-border: rgba(203, 213, 225, 0.72);
+    background:
+        linear-gradient(180deg, #ffffff 0%, #f7fbff 46%, #eef6ff 100%) !important;
 }
 
 body:not(.login-page) #navbar,
@@ -93,23 +96,6 @@ body:not(.login-page) .navbar.navbar-inverse {
         linear-gradient(145deg, #dbeafe 0%, #e8eef8 48%, #f6efe4 100%) !important;
     border-color: rgba(203, 213, 225, 0.72) !important;
     box-shadow: inset -1px 0 0 rgba(148, 163, 184, 0.22), 12px 0 36px rgba(15, 23, 42, 0.04);
-}
-
-body:not(.login-page) #navbar .navbar-inverse::before,
-body:not(.login-page) .navbar.navbar-inverse::before {
-    content: "";
-    position: absolute;
-    right: -86px;
-    top: 18%;
-    width: 210px;
-    height: 210px;
-    pointer-events: none;
-    border: 1px solid rgba(37, 99, 235, 0.1);
-    border-radius: 50%;
-    background:
-        radial-gradient(circle at 34% 24%, rgba(255, 255, 255, 0.62), transparent 18%),
-        conic-gradient(from 160deg, rgba(255, 255, 255, 0.44), rgba(147, 197, 253, 0.36), rgba(251, 191, 36, 0.18), rgba(255, 255, 255, 0.5));
-    opacity: 0.62;
 }
 
 body:not(.login-page) #navbar .navbar-header,
@@ -140,11 +126,19 @@ body:not(.login-page) .navbar.navbar-inverse .nav > li.open > a {
     color: #0f172a !important;
 }
 
-body:not(.login-page) #navbar .nav .short-label,
 body:not(.login-page) #navbar .nav .full-label,
-body:not(.login-page) .navbar.navbar-inverse .nav .short-label,
 body:not(.login-page) .navbar.navbar-inverse .nav .full-label {
     color: inherit !important;
+}
+
+body:not(.login-page) .container.content,
+body:not(.login-page) #main,
+body:not(.login-page) .content,
+body:not(.login-page) .list-container,
+body:not(.login-page) .record,
+body:not(.login-page) .page-content {
+    background:
+        linear-gradient(180deg, #ffffff 0%, #f8fbff 44%, #eef6ff 100%) !important;
 }
 
 .field[data-name="aiReplySuggestion"] textarea,
