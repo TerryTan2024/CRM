@@ -76,13 +76,10 @@ body:not(.login-page) footer .credit a[href*="espocrm"] {
 }
 
 body:not(.login-page) {
-    --body-bg: #eef6ff;
     --navbar-inverse-bg: transparent;
     --navbar-inverse-link-active-bg: rgba(255, 255, 255, 0.58);
     --navbar-inverse-link-hover-bg: rgba(255, 255, 255, 0.5);
     --navbar-inverse-border: rgba(203, 213, 225, 0.72);
-    background:
-        linear-gradient(180deg, #f3f8ff 0%, #eaf4ff 48%, #dfeeff 100%) !important;
 }
 
 body:not(.login-page) #navbar,
@@ -129,16 +126,6 @@ body:not(.login-page) .navbar.navbar-inverse .nav > li.open > a {
 body:not(.login-page) #navbar .nav .full-label,
 body:not(.login-page) .navbar.navbar-inverse .nav .full-label {
     color: inherit !important;
-}
-
-body:not(.login-page) .container.content,
-body:not(.login-page) #main,
-body:not(.login-page) .content,
-body:not(.login-page) .list-container,
-body:not(.login-page) .record,
-body:not(.login-page) .page-content {
-    background:
-        linear-gradient(180deg, #f3f8ff 0%, #eaf4ff 48%, #dfeeff 100%) !important;
 }
 
 body:not(.login-page) .panel,
