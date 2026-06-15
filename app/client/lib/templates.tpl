@@ -210,6 +210,10 @@ body .container.content {
     line-height: 1.15;
 }
 
+.pd-hero-copy {
+    transform: translateY(-72px);
+}
+
 .pd-summary {
     max-width: 380px;
     margin: 22px 0 0;
@@ -433,6 +437,10 @@ body .container.content {
         font-size: 34px;
     }
 
+    .pd-hero-copy {
+        transform: translateY(-36px);
+    }
+
     .pd-summary {
         font-size: 14px;
     }
@@ -500,6 +508,10 @@ body .container.content {
     #login.panel {
         transform: none;
     }
+
+    .pd-hero-copy {
+        transform: none;
+    }
 }
 </style>
 
@@ -511,7 +523,7 @@ body .container.content {
                 <span>飞迭智客</span>
             </div>
 
-            <div>
+            <div class="pd-hero-copy">
                 <h1 class="pd-title">智能客户管理</h1>
                 <p class="pd-summary">
                     <span>邮件、询盘、客服消息，自动归集</span>
