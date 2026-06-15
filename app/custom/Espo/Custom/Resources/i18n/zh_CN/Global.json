@@ -9,7 +9,7 @@
         "KnowledgeBaseCategory": "知识库分类",
         "Email": "电子邮件",
         "Task": "跟进任务",
-        "Call": "电话记录",
+        "Call": "通话",
         "Meeting": "会议",
         "Document": "资料文件"
     },
@@ -23,7 +23,7 @@
         "KnowledgeBaseCategory": "知识库分类",
         "Email": "电子邮件",
         "Task": "跟进任务",
-        "Call": "电话记录",
+        "Call": "通话",
         "Meeting": "会议",
         "Document": "资料文件"
     },
