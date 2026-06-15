@@ -179,15 +179,22 @@ body .container.content {
 }
 
 .pd-brand-mark {
-    display: grid;
-    width: 44px;
-    height: 44px;
-    place-items: center;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.8);
-    color: #1d4ed8;
-    font-size: 20px;
-    font-weight: 820;
+    display: inline-flex;
+    width: 48px;
+    height: 48px;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 54%, #0891b2 100%);
+    color: #fff;
+    box-shadow: 0 16px 34px rgba(37, 99, 235, 0.22);
+}
+
+.pd-brand-mark svg {
+    display: block;
+    width: 30px;
+    height: 30px;
 }
 
 .pd-title {
@@ -477,7 +484,15 @@ body .container.content {
     <section class="pd-left">
         <div class="pd-brand-content">
             <div class="pd-brand">
-                <span class="pd-brand-mark">P</span>
+                <span class="pd-brand-mark" aria-hidden="true">
+                    <svg viewBox="0 0 32 32" focusable="false">
+                        <path d="M8 7v18" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
+                        <path d="M8 8h11.2c4.1 0 6.8 2.5 6.8 6.1s-2.7 6.1-6.8 6.1H8" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 14h8.2" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" opacity="0.86"/>
+                        <circle cx="23.8" cy="8.2" r="2.2" fill="currentColor" opacity="0.9"/>
+                        <circle cx="24.6" cy="23.5" r="2.2" fill="currentColor" opacity="0.55"/>
+                    </svg>
+                </span>
                 <span>飞迭智客</span>
             </div>
 
